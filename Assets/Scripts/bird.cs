@@ -48,7 +48,6 @@ public class bird : MonoBehaviour
     private void Jump() {
         // reset velocity to zero so behavior stays consistent
         rb2d.velocity = Vector2.zero;
-
         rb2d.AddForce(new Vector2(0, upForce));
         anim.SetTrigger("Flap");
     }
@@ -61,6 +60,7 @@ public class bird : MonoBehaviour
 
     private void setupActions() {
         actions.Add("jump", () => {
+            Debug.Log("Bird is jumping");
             TriggerJump();
         });
         actions.Add("start", () => {
@@ -92,7 +92,7 @@ public class bird : MonoBehaviour
     }
 
     private void TriggerJump() {
-        if(!isBirdDead()) {
+        if(!isBirdDead() {
             Jump();
         }
     }
