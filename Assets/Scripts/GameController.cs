@@ -54,8 +54,8 @@ public class GameController : MonoBehaviour
         gameOver = true;
     }
 
-    //public void birdFlap()
-    //{
-    //    bird.GetComponent<bird>.birdFlap();
-    //}
+    public void birdFlap()
+    {
+        bird.GetComponent<bird>().Flap();
+    }
 }

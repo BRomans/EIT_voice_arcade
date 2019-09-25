@@ -6,7 +6,6 @@ public class MicrophoneInput : MonoBehaviour
 {
     public int audioSampleRate = 44100;
     public string microphone;
-    public Text volumeText;
 
     private AudioSource audioSource;
 

@@ -4,8 +4,6 @@ using System.Collections;
 
 public class AudioVisualizer : MonoBehaviour
 {
-    public Text volumeText;
-
     private float volume;
     private float volumeLast;
 
@@ -18,14 +16,9 @@ public class AudioVisualizer : MonoBehaviour
     {
         volume = GetComponent<MicrophoneInput>().GetAveragedVolume();
 
-        volumeText.text = "dB: " + volume;
-
         if (Mathf.Abs(volumeLast - volume) > .05f)
         {
-            volumeText.text = "volume flap";
-        } else
-        {
-            volumeText.text = " ";
+            GameController.instance.birdFlap();
         }
 
         volumeLast = volume;

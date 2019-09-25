@@ -23,35 +23,22 @@ public class bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDead)
+        if (Input.GetMouseButtonDown (0))
         {
-            if (Input.GetMouseButtonDown (0))
-            {
-                // reset velocity to zero so behavior stays consistent
-                rb2d.velocity = Vector2.zero;
-
-                rb2d.AddForce(new Vector2(0, upForce));
-                anim.SetTrigger("Flap");
-            } else if (volumeText.text == "volume flap")
-            {
-                rb2d.velocity = Vector2.zero;
-
-                rb2d.AddForce(new Vector2(0, upForce));
-                anim.SetTrigger("Flap");
-            }
+            Flap();
         }
     }
 
-    //public void Flap()
-    //{
-    //    if (!isDead)
-    //    {
-    //        rb2d.velocity = Vector2.zero;
+    public void Flap()
+    {
+        if (!isDead)
+        {
+            rb2d.velocity = Vector2.zero;
 
-    //        rb2d.AddForce(new Vector2(0, upForce));
-    //        anim.SetTrigger("Flap");
-    //    }
-    //}
+            rb2d.AddForce(new Vector2(0, upForce));
+            anim.SetTrigger("Flap");
+        }
+    }
 
     private void OnCollisionEnter2D()
     {
