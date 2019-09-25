@@ -34,19 +34,17 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown (0))
         {
-            Flap();
+            Jump();
         }
     }
 
-    public void Flap()
+    public void Jump()
     {
         if (!isDead)
         {
-            if (Input.GetMouseButtonDown (0))
-            {
-               Jump();
-            }
-
+            rb2d.velocity = Vector2.zero;
+            rb2d.AddForce(new Vector2(0, upForce));
+            anim.SetTrigger("Flap");
         }
     }
 
@@ -58,13 +56,6 @@ public class Bird : MonoBehaviour
         GameController.instance.birdDied();
     }
 
-    private void Jump() {
-        // reset velocity to zero so behavior stays consistent
-        rb2d.velocity = Vector2.zero;
-        rb2d.AddForce(new Vector2(0, upForce));
-        anim.SetTrigger("Flap");
-    }
-
     public bool isBirdDead()  {
         return isDead;
     }
@@ -74,7 +65,7 @@ public class Bird : MonoBehaviour
     private void setupActions() {
         actions.Add("jump", () => {
             Debug.Log("Bird is jumping");
-            TriggerJump();
+            Jump();
         });
         actions.Add("start", () => {
             //TriggerJump()
@@ -100,13 +91,6 @@ public class Bird : MonoBehaviour
         {
             action.Invoke();
             //keywordAction.Invoke();
-        }
-       
-    }
-
-    private void TriggerJump() {
-        if(!isBirdDead()) {
-            Jump();
         }
     }
 }

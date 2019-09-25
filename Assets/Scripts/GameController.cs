@@ -56,6 +56,6 @@ public class GameController : MonoBehaviour
 
     public void birdFlap()
     {
-        bird.GetComponent<Bird>().Flap();
+        bird.GetComponent<Bird>().Jump();
     }
 }
