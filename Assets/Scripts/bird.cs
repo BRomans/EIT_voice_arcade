@@ -4,8 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
+using UnityEngine.UI;
 
-public class bird : MonoBehaviour
+
+public class Bird : MonoBehaviour
 {
     private bool isDead = false;
     private Rigidbody2D rb2d;
@@ -15,6 +17,8 @@ public class bird : MonoBehaviour
     
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
+
+    public Text volumeText;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +32,21 @@ public class bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown (0))
+        {
+            Flap();
+        }
+    }
+
+    public void Flap()
+    {
         if (!isDead)
         {
             if (Input.GetMouseButtonDown (0))
             {
                Jump();
             }
+
         }
     }
 

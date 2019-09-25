@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
+    public GameObject bird;
+
     private int score = 0;
 
     // Start is called before the first frame update
@@ -51,5 +53,9 @@ public class GameController : MonoBehaviour
         gameOverText.SetActive(true);
         gameOver = true;
     }
-   
+
+    public void birdFlap()
+    {
+        bird.GetComponent<Bird>().Flap();
+    }
 }
