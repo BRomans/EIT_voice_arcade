@@ -105,7 +105,7 @@ public class Bird : MonoBehaviour
     }
 
     private void TriggerJump() {
-        if(!isBirdDead() {
+        if(!isBirdDead()) {
             Jump();
         }
     }
