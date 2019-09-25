@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bird : MonoBehaviour
+public class Bird : MonoBehaviour
 {
     private bool isDead = false;
     private Rigidbody2D rb2d;
