@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class bird : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class bird : MonoBehaviour
     private Animator anim;
 
     public float upForce = 200f;
+
+    public Text volumeText;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +32,26 @@ public class bird : MonoBehaviour
 
                 rb2d.AddForce(new Vector2(0, upForce));
                 anim.SetTrigger("Flap");
+            } else if (volumeText.text == "volume flap")
+            {
+                rb2d.velocity = Vector2.zero;
+
+                rb2d.AddForce(new Vector2(0, upForce));
+                anim.SetTrigger("Flap");
             }
         }
     }
+
+    //public void Flap()
+    //{
+    //    if (!isDead)
+    //    {
+    //        rb2d.velocity = Vector2.zero;
+
+    //        rb2d.AddForce(new Vector2(0, upForce));
+    //        anim.SetTrigger("Flap");
+    //    }
+    //}
 
     private void OnCollisionEnter2D()
     {
