@@ -33,8 +33,8 @@ public class GameController : MonoBehaviour
     {
         if (gameOver && Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+            restartGame();
+        } 
     }
 
     public void birdScored()
@@ -52,6 +52,10 @@ public class GameController : MonoBehaviour
     {
         gameOverText.SetActive(true);
         gameOver = true;
+    }
+
+    public void restartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void birdFlap()

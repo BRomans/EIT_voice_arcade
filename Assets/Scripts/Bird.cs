@@ -40,11 +40,22 @@ public class Bird : MonoBehaviour
 
     public void Jump()
     {
-        if (!isDead)
-        {
+        if (!isDead) {
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(0, upForce));
             anim.SetTrigger("Flap");
+        }
+    }
+
+    public void Die() {
+        if(!isDead) {
+            GameController.instance.birdDied();
+        }
+    }
+
+    private void Restart() {
+        if(isDead) {
+            GameController.instance.restartGame();
         }
     }
 
@@ -69,10 +80,13 @@ public class Bird : MonoBehaviour
         });
         actions.Add("start", () => {
             //TriggerJump()
+            Debug.Log("Game has started");
+            Restart();
         });
         
-        actions.Add("test", () => {
-            //TriggerJump()
+        actions.Add("die", () => {
+            Debug.Log("You psycho!");
+            Die();
         });
 
     }
