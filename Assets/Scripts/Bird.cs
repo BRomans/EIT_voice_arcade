@@ -49,6 +49,9 @@ public class Bird : MonoBehaviour
 
     public void Die() {
         if(!isDead) {
+            rb2d.velocity = Vector2.zero;
+            isDead = true;
+            anim.SetTrigger("Die");
             GameController.instance.birdDied();
         }
     }
