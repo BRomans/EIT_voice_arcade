@@ -60,6 +60,6 @@ public class GameController : MonoBehaviour
 
     public void birdFlap()
     {
-        bird.GetComponent<Bird>().Jump();
+        bird.GetComponent<PlayerScript>().Jump();
     }
 }
