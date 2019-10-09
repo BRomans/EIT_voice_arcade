@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 541697072}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   spawnRate: 4
   columnMin: -2
   columnMax: 2
-  columnYsetPosistion: -1.5
+  columnYsetPosistion: -0.5
 --- !u!1 &1887397411
 GameObject:
   m_ObjectHideFlags: 0
