@@ -12,8 +12,12 @@ public class PlayerScript : MonoBehaviour
     bool isGameOver = false;
     // Start is called before the first frame update
 
+    private bool isDead = false;
+    private Animator anim;
+
     void Start()
     {
+      anim = GetComponent<Animator>();
       myRigidbody = transform.GetComponent<Rigidbody2D>();
       myRigidbody.AddForce(Vector3.forward * (movPower * myRigidbody.mass * 20.0f));
     }
@@ -37,6 +41,20 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public bool isBirdDead()  {
+        return isDead;
+    }
+
+    void OnCollisionEnter2D(Collision2D other){
+
+      if (other.gameObject.tag == "Colum"){
+       myRigidbody.velocity = Vector2.zero;
+       isDead = true;
+       //anim.SetTrigger("Die");
+       GameController.instance.birdDied();
+     }
+    }
+
     void OnCollisionStay2D(Collision2D other)
     {
 
@@ -47,7 +65,6 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-
     void OnCollisionExit2D(Collision2D other)
     {
 
@@ -57,6 +74,8 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+
+
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Star") {
