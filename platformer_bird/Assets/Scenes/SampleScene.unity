@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 1887397411}
   gameOver: 0
-  scrollSpeed: -1.5
+  scrollSpeed: -3.5
   scoreText: {fileID: 98573929}
   bird: {fileID: 541697067}
 --- !u!114 &1777548683
@@ -1161,6 +1161,7 @@ MonoBehaviour:
   spawnRate: 4
   columnMin: -2
   columnMax: 2
+  columnYsetPosistion: -1.5
 --- !u!1 &1887397411
 GameObject:
   m_ObjectHideFlags: 0

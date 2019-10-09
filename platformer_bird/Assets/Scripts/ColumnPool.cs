@@ -7,8 +7,9 @@ public class ColumnPool : MonoBehaviour
     public int columnPoolSize = 5;
     public GameObject columnPrefab;
     public float spawnRate = 4f;
-    public float columnMin = -1f;
-    public float columnMax = 3.5f;
+    public float columnMin = 0f;//-1f;
+    public float columnMax = -1f;//3.5f;
+    public float columnYsetPosistion = 0f;//3.5f;
 
     private GameObject[] columns;
     private Vector2 objectPoolPosition = new Vector2(-15f, -25f);
@@ -35,7 +36,7 @@ public class ColumnPool : MonoBehaviour
         if (!GameController.instance.gameOver && timeSinceLastSpawn >= spawnRate)
         {
             timeSinceLastSpawn = 0;
-            float spawnYPosition = Random.Range(columnMin, columnMax);
+            float spawnYPosition = columnYsetPosistion;//Random.Range(columnMin, columnMax);
 
             columns[currentColumn].transform.position = new Vector2(spawnXPosition, spawnYPosition);
             currentColumn++;
