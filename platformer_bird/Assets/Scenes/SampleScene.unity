@@ -612,6 +612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpPower: 10
   movPower: 5
+  bullet: {fileID: 8049423350093175422, guid: 03e0e698eb91c4593a2eead815c9ef4e, type: 3}
+  bulletSpeed: 10
 --- !u!95 &541697073
 Animator:
   serializedVersion: 3

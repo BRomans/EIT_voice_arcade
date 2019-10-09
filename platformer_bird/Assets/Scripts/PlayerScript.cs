@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,9 @@ public class PlayerScript : MonoBehaviour
     bool isGrounded = false;
     float posX = 0.0f;
     bool isGameOver = false;
-    // Start is called before the first frame update
+
+    public Rigidbody2D bullet;
+    public float bulletSpeed = 10f;
 
     void Start()
     {
@@ -23,8 +26,14 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
       if (Input.GetKey(KeyCode.Space)) {
-            Jump();
+            Shoot();
       }
+    }
+
+    private void Shoot()
+    {
+        var bulletInst = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector2(0, 0)));
+        bulletInst.velocity = new Vector2(bulletSpeed, 0);
     }
 
     public void Jump()
