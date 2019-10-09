@@ -13,6 +13,9 @@ public class Bird : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
 
+    public Rigidbody2D bullet;
+    public float bulletSpeed = 8f;
+
     public float upForce = 200f;
     
     private KeywordRecognizer keywordRecognizer;
@@ -35,6 +38,12 @@ public class Bird : MonoBehaviour
         if (Input.GetMouseButtonDown (0))
         {
             Jump();
+        }
+
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
+        {
+            var bulletInst = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector2(0, 0)));
+            bulletInst.velocity = new Vector2(bulletSpeed, 0);
         }
     }
 
