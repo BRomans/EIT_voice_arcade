@@ -20,18 +20,19 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-      anim = GetComponent<Animator>();
-      myRigidbody = transform.GetComponent<Rigidbody2D>();
-      myRigidbody.AddForce(Vector3.forward * (movPower * myRigidbody.mass * 20.0f));
+        anim = GetComponent<Animator>();
+        myRigidbody = transform.GetComponent<Rigidbody2D>();
+        myRigidbody.AddForce(Vector3.forward * (movPower * myRigidbody.mass * 20.0f));
     }
 
     //
 
     void Update()
     {
-      if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space))
+        {
             Shoot();
-      }
+        }
     }
 
     private void Shoot()
@@ -50,18 +51,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public bool isBirdDead()  {
+    public bool isBirdDead()
+    {
         return isDead;
     }
 
-    void OnCollisionEnter2D(Collision2D other){
+    void OnCollisionEnter2D(Collision2D other)
+    {
 
-      if (other.gameObject.tag == "Colum"){
-       myRigidbody.velocity = Vector2.zero;
-       isDead = true;
-       //anim.SetTrigger("Die");
-       GameController.instance.birdDied();
-     }
+        if (other.gameObject.tag == "Colum")
+        {
+            myRigidbody.velocity = Vector2.zero;
+            isDead = true;
+            //anim.SetTrigger("Die");
+            GameController.instance.birdDied();
+        }
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -86,8 +90,10 @@ public class PlayerScript : MonoBehaviour
 
 
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Star") {
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Star")
+        {
             //myGameController.IncrementScore();
             //myAudioPlayer.PlayOneShot(scoreSFX);
             Destroy(other.gameObject);
