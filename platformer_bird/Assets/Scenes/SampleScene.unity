@@ -702,7 +702,7 @@ SpriteRenderer:
   m_SortingLayerID: 1966233963
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 502122ac1246d455e83556ca52dfcd7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c063d15bad424fa9990cd7ae76eaf61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   columnPoolSize: 5
-  columnPrefab: {fileID: 1132160191641555251, guid: 06f151528337e1d468bbd32429540535,
+  columnPrefab: {fileID: 1132160191641555251, guid: 5c24007f62c4445df9ab286b3dc9b054,
     type: 3}
   spawnRate: 4
   columnMin: -2
@@ -1325,7 +1325,7 @@ SpriteRenderer:
   m_SortingLayerID: 1966233963
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 502122ac1246d455e83556ca52dfcd7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c063d15bad424fa9990cd7ae76eaf61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
