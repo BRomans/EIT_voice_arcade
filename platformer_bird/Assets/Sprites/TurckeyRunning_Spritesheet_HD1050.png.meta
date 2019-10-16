@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: 8718273d15c19164ebb281bd03108e85
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3074765259535253789
+    second: TurckeyRunning_Spritesheet_HD1050_0
+  - first:
+      213: 3620395976558007377
+    second: TurckeyRunning_Spritesheet_HD1050_1
+  - first:
+      213: 1403448126647522750
+    second: TurckeyRunning_Spritesheet_HD1050_2
+  - first:
+      213: -448712131537620863
+    second: TurckeyRunning_Spritesheet_HD1050_3
+  - first:
+      213: -8737082408744140010
+    second: TurckeyRunning_Spritesheet_HD1050_4
+  - first:
+      213: -8359504450574163549
+    second: TurckeyRunning_Spritesheet_HD1050_5
+  - first:
+      213: 5946696122273728812
+    second: TurckeyRunning_Spritesheet_HD1050_6
+  - first:
+      213: 4185297513352841143
+    second: TurckeyRunning_Spritesheet_HD1050_7
+  - first:
+      213: -4630085406749074658
+    second: TurckeyRunning_Spritesheet_HD1050_8
+  - first:
+      213: 1457978273868839587
+    second: TurckeyRunning_Spritesheet_HD1050_9
+  - first:
+      213: 9071239382517555750
+    second: TurckeyRunning_Spritesheet_HD1050_10
+  - first:
+      213: -4026950000785531968
+    second: TurckeyRunning_Spritesheet_HD1050_11
+  - first:
+      213: -2660223966843634607
+    second: TurckeyRunning_Spritesheet_HD1050_12
+  - first:
+      213: -2808805908337721724
+    second: TurckeyRunning_Spritesheet_HD1050_13
+  - first:
+      213: -7358404071023780250
+    second: TurckeyRunning_Spritesheet_HD1050_14
+  - first:
+      213: -5247556302309365801
+    second: TurckeyRunning_Spritesheet_HD1050_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 3165
+        width: 830
+        height: 962
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d6220438f42b5a46a12f4489b3ccd56
+      internalID: 3074765259535253789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_1
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 3161
+        width: 866
+        height: 907
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e98f1861f7de5644b3e619c5e285e74
+      internalID: 3620395976558007377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_2
+      rect:
+        serializedVersion: 2
+        x: 2163
+        y: 3166
+        width: 900
+        height: 842
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81381bc11571db44b561cc6112bddc7
+      internalID: 1403448126647522750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_3
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 3176
+        width: 912
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aab78cf9122a6441878ba2326379f87
+      internalID: -448712131537620863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_4
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 2169
+        width: 924
+        height: 923
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd46fa3ae2fc3a64c8725670de196339
+      internalID: -8737082408744140010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_5
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 2171
+        width: 914
+        height: 947
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a9f86dbe8f0d248a3109c660a5fc14
+      internalID: -8359504450574163549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_6
+      rect:
+        serializedVersion: 2
+        x: 2163
+        y: 2247
+        width: 900
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ca2c317164b7b4f9e651351aec28ee
+      internalID: 5946696122273728812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_7
+      rect:
+        serializedVersion: 2
+        x: 3214
+        y: 2236
+        width: 866
+        height: 880
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264240fee9f876c4a805c7c2336d43a2
+      internalID: 4185297513352841143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_8
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1070
+        width: 830
+        height: 957
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b809b4d8332eb949aaf72204bc9d708
+      internalID: -4630085406749074658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_9
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 1069
+        width: 865
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a871e4afdf9b942a968f8c759e6f65
+      internalID: 1457978273868839587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_10
+      rect:
+        serializedVersion: 2
+        x: 2163
+        y: 1070
+        width: 900
+        height: 869
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae349118dc6b984ba2ecfe601cd465a
+      internalID: 9071239382517555750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_11
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 1057
+        width: 912
+        height: 931
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0efa7cb55a82dc54eaf5396cd5f08720
+      internalID: -4026950000785531968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_12
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 22
+        width: 926
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f016b04d29f9d7e46ae9fae164cef5d5
+      internalID: -2660223966843634607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_13
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 26
+        width: 914
+        height: 980
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b4d904d9205d34408f42ba84cd2dd12
+      internalID: -2808805908337721724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_14
+      rect:
+        serializedVersion: 2
+        x: 2163
+        y: 106
+        width: 900
+        height: 920
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4e00a972829344eaec5f04aadb95d7
+      internalID: -7358404071023780250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurckeyRunning_Spritesheet_HD1050_15
+      rect:
+        serializedVersion: 2
+        x: 3215
+        y: 85
+        width: 865
+        height: 917
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6730dd8ccb3b27348b3ddac4363a2d38
+      internalID: -5247556302309365801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

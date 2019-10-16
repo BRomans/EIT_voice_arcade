@@ -58,14 +58,20 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-
+        if (other.collider.tag == "Ground")
+        {
+            anim.SetTrigger("Jump_F");
+        }
         if (other.gameObject.tag == "Colum")
         {
             myRigidbody.velocity = Vector2.zero;
             isDead = true;
-            //anim.SetTrigger("Die");
+            anim.SetTrigger("Die");
             GameController.instance.birdDied();
         }
+
+
+
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -84,6 +90,7 @@ public class PlayerScript : MonoBehaviour
         if (other.collider.tag == "Ground")
         {
             isGrounded = false;
+            anim.SetTrigger("Jump");
         }
 
     }

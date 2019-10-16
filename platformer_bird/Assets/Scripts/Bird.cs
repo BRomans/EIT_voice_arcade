@@ -17,7 +17,7 @@ public class Bird : MonoBehaviour
     public float bulletSpeed = 8f;
 
     public float upForce = 200f;
-    
+
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
@@ -52,7 +52,6 @@ public class Bird : MonoBehaviour
         if (!isDead) {
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(0, upForce));
-            anim.SetTrigger("Flap");
         }
     }
 
@@ -60,7 +59,6 @@ public class Bird : MonoBehaviour
         if(!isDead) {
             rb2d.velocity = Vector2.zero;
             isDead = true;
-            anim.SetTrigger("Die");
             GameController.instance.birdDied();
         }
     }
@@ -75,7 +73,6 @@ public class Bird : MonoBehaviour
     {
         rb2d.velocity = Vector2.zero;
         isDead = true;
-        anim.SetTrigger("Die");
         GameController.instance.birdDied();
     }
 
@@ -95,7 +92,7 @@ public class Bird : MonoBehaviour
             Debug.Log("Game has started");
             Restart();
         });
-        
+
         actions.Add("die", () => {
             Debug.Log("You psycho!");
             Die();
