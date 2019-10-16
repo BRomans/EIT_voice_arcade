@@ -11,4 +11,12 @@ public class Column : MonoBehaviour
               GameController.instance.birdScored();
           }
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name == "laser_0(Clone)")
+        {
+            Destroy(col.gameObject);
+        }
+    }
 }
