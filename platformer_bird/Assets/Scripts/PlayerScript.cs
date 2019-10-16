@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
     public void Jump() {
         if (isGrounded && !isGameOver)
         {
-            myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale * 40.0f));
+            myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale * 20.0f));
             //myAudioPlayer.PlayOneShot(jump);
             isGrounded = false;
             //anim.SetTrigger("Flap");
@@ -137,7 +137,17 @@ public class PlayerScript : MonoBehaviour
             Die();
         });
 
-        actions.Add("shoot", () => {
+        actions.Add("pu", () => {
+            Debug.Log("Pew Pew!");
+            Shoot();
+        });
+
+        actions.Add("peu", () => {
+            Debug.Log("Pew Pew!");
+            Shoot();
+        });
+
+        actions.Add("pew", () => {
             Debug.Log("Pew Pew!");
             Shoot();
         });
