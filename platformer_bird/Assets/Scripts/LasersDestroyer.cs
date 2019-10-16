@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shootable : MonoBehaviour
+public class LasersDestroyer : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,11 +16,9 @@ public class Shootable : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    // Destroy colliding objects
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (col.gameObject.name == "laser_0(Clone)") {
-            Destroy(col.gameObject);
-            Destroy(gameObject);
-        }
+        Destroy(collision.gameObject);
     }
 }
