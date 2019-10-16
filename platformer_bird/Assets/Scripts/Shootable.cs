@@ -18,7 +18,7 @@ public class Shootable : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("collision name = " + col.gameObject.name);
+        //Debug.Log("collision name = " + col.gameObject.name);
 
         if (col.gameObject.name == "laser_0(Clone)")
         {
