@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
         if (gameOver && Input.GetMouseButtonDown(0))
         {
             restartGame();
-        } 
+        }
     }
 
     public void birdScored()
@@ -46,6 +46,11 @@ public class GameController : MonoBehaviour
 
         score++;
         scoreText.text = "Score: " + score.ToString();
+
+        // increase speed as score gets higher
+        // current rate: .2 speed every 5 points
+        float factor = 0.2f * (score % 5);
+        scrollSpeed -= factor;
     }
 
     public void birdDied()
