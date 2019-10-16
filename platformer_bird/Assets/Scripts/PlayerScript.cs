@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float jumpPower = 10.0f;
+    public float jumpPower = 20.0f;
     public float movPower = 5.0f;
     Rigidbody2D myRigidbody;
     bool isGrounded = false;
@@ -137,7 +137,7 @@ public class PlayerScript : MonoBehaviour
             Die();
         });
 
-        actions.Add("pu", () => {
+        actions.Add("bang", () => {
             Debug.Log("Pew Pew!");
             Shoot();
         });
