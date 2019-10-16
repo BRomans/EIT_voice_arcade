@@ -18,9 +18,21 @@ public class Shootable : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        Debug.Log("collision name = " + col.gameObject.name);
+
         if (col.gameObject.name == "laser_0(Clone)")
         {
             Destroy(col.gameObject);
+            Destroy(gameObject);
+        }
+
+        if (col.gameObject.name == "AstroidNEW(Clone)")
+        {
+            Destroy(gameObject);
+        }
+
+        if (col.gameObject.name == "Bird")
+        {
             Destroy(gameObject);
         }
     }
