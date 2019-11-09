@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float jumpPower = 20.0f;
+    public float jumpPower = 2.0f;
     public float movPower = 5.0f;
     Rigidbody2D myRigidbody;
     bool isGrounded = false;
@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     public float bulletSpeed = 10f;
 
     private bool isDead = false;
+    public bool isFlapping = false;
     private Animator anim;
 
     private KeywordRecognizer keywordRecognizer;
@@ -40,6 +41,12 @@ public class PlayerScript : MonoBehaviour
         {
             Shoot();
         }
+
+        //Debug.Log("is flapping? " + isFlapping);
+        if (isFlapping)
+        {
+            Jump();
+        }
     }
 
     /* Generates a new bullet object */
@@ -50,9 +57,10 @@ public class PlayerScript : MonoBehaviour
 
     /* Triggers a vertical jump and the player animation */
     public void Jump() {
-        if (isGrounded && !isGameOver)
+        if (!isGameOver)
         {
-            myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale * 20.0f));
+            Debug.Log("is flapping...");
+            myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale *2f));
             //myAudioPlayer.PlayOneShot(jump);
             isGrounded = false;
             //anim.SetTrigger("Flap");
@@ -82,15 +90,22 @@ public class PlayerScript : MonoBehaviour
     }
 
     /* This function manages 2D collisions of player object */
-    void OnCollisionEnter2D(Collision2D other) {
-
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.tag == "Ground")
+        {
+            anim.SetTrigger("Jump_F");
+        }
         if (other.gameObject.tag == "Colum")
         {
             myRigidbody.velocity = Vector2.zero;
             isDead = true;
-            //anim.SetTrigger("Die");
+            anim.SetTrigger("Die");
             GameController.instance.birdDied();
         }
+
+
+
     }
 
     void OnCollisionStay2D(Collision2D other) {
@@ -107,6 +122,7 @@ public class PlayerScript : MonoBehaviour
         if (other.collider.tag == "Ground")
         {
             isGrounded = false;
+            anim.SetTrigger("Jump");
         }
 
     }
@@ -131,7 +147,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Game has started");
             Restart();
         });
-        
+
         actions.Add("die", () => {
             Debug.Log("You psycho!");
             Die();

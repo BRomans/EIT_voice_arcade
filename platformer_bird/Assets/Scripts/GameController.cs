@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject bird;
 
     private int score = 0;
+    public bool flapping;
 
     // Start is called before the first frame update
     void Awake()
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour
         {
             restartGame();
         }
+
+        bird.GetComponent<PlayerScript>().isFlapping = flapping;
     }
 
     public void birdScored()
@@ -65,6 +68,11 @@ public class GameController : MonoBehaviour
 
     public void birdFlap()
     {
-        bird.GetComponent<PlayerScript>().Jump();
+        bird.GetComponent<PlayerScript>().isFlapping = true;
+    }
+
+    public void notFlapping()
+    {
+        bird.GetComponent<PlayerScript>().isFlapping = false;
     }
 }
