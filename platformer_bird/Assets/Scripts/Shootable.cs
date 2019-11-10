@@ -2,35 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Class for objects that can be destroyed by player's bullets */
 public class Shootable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    void Start() { }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() { }
 
+    /* Define behavior for various collision types */
     void OnCollisionEnter2D(Collision2D col)
     {
-        //Debug.Log("collision name = " + col.gameObject.name);
-
+        // Shootable by laser bullet
         if (col.gameObject.name == "laser_0(Clone)")
         {
             Destroy(col.gameObject);
             Destroy(gameObject);
         }
 
-        if (col.gameObject.name == "AstroidNEW(Clone)")
+        // Prevent spawning on top of obstacles
+        if (col.gameObject.name == "AstroidNEW 1(Clone)")
         {
             Destroy(gameObject);
         }
 
+        // Destroy when hit player and game ends
         if (col.gameObject.name == "Bird")
         {
             Destroy(gameObject);

@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Using pooling to potimize memory for creating the obstacles */
 public class ColumnPool : MonoBehaviour
 {
     public int columnPoolSize = 5;
     public GameObject columnPrefab;
     public float spawnRate = 4f;
-    public float columnMin = 0f;//-1f;
-    public float columnMax = -1f;//3.5f;
+    public float columnMin = 0f;
+    public float columnMax = -1f;
     public float columnYsetPosition = 0f;
 
-    private GameObject[] columns;
-    private Vector2 objectPoolPosition = new Vector2(-15f, -25f);
+    private GameObject[] columns; // column pool
+    private Vector2 objectPoolPosition = new Vector2(-15f, -25f); // offscreen position for holding unused columns
     private float timeSinceLastSpawn;
     private float spawnXPosition = 10f;
     private int currentColumn = 0;
 
-    // Start initializes the pool of obstacles (columns)
+    /* Initialize a pool of obstacles (columns) of size columnPoolSize off screen */
     void Start()
     {
         columns = new GameObject[columnPoolSize];
@@ -28,7 +29,7 @@ public class ColumnPool : MonoBehaviour
         }
     }
 
-    // Update moves the next obstacle to the correct position in front of the player
+    /* Move the next obstacle in the pool to the correct position in front of the player */
     void Update()
     {
         timeSinceLastSpawn += Time.deltaTime;
@@ -38,11 +39,12 @@ public class ColumnPool : MonoBehaviour
             timeSinceLastSpawn = 0;
             float spawnYPosition = -1.8f;
 
-            // TODO: random resize of obstacles to increase difficulty and make it interesting
+            // Randomly resize the next obstacle to increase difficulty and add dynamism
             float scaleX = Random.Range(1, 2);
             float scaleY = scaleX * 1.4f;
             columns[currentColumn].transform.localScale = new Vector2(scaleX, scaleY);
 
+            // Place the next obstacle
             columns[currentColumn].transform.position = new Vector2(spawnXPosition, spawnYPosition);
             currentColumn++;
             if (currentColumn >= columnPoolSize)

@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
 
     public Text volumeText;
 
+    /* Setup voice recognition, animations and the player size and movement */
     void Start() {
         setupActions();
         setupRecognizer();
@@ -34,22 +35,22 @@ public class PlayerScript : MonoBehaviour
         myRigidbody.AddForce(Vector3.forward * (movPower * myRigidbody.mass * 20.0f));
     }
 
-    /* Updates the player object. Called once per frame */
+    /* Updates the player object with commands received from the user/audio control */
     void Update() {
         if (!isDead)
         {
-            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
+            // Shoot on spacebar, for debugging on Mac
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Shoot();
             }
 
-            // jumping with j key for quiet testing
+            // Jumping with keyboard for quiet testing
             if (Input.GetKeyDown(KeyCode.J))
             {
                 isFlapping = true;
                 Jump();
             }
-
             if (Input.GetKeyUp(KeyCode.J))
             {
                 isFlapping = false;
@@ -62,13 +63,13 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    /* Generates a new bullet object */
+    /* Make a new bullet and shoot it */
     private void Shoot() {
         var bulletInst = Instantiate(bullet, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Quaternion.Euler(new Vector2(0, 0)));
         bulletInst.velocity = new Vector2(bulletSpeed, 0);
     }
 
-    /* Triggers a vertical jump and the player animation */
+    /* Trigger a vertical jump and play the player animation */
     public void Jump() {
         if (!isDead)
         {
@@ -79,7 +80,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    /* Kills the player object and sets it to dead state */
+    /* Kill the player object, set it to dead and notify the game controller */
     public void Die() {
         if(!isDead) {
             myRigidbody.velocity = Vector2.zero;
@@ -89,13 +90,14 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    /* This function triggers a restart of the game */
+    /* Trigger a restart of the game */
     private void Restart() {
         if(isDead) {
             GameController.instance.restartGame();
         }
     }
 
+    /* Allow controller to check if bird is dead */
     public bool isBirdDead()  {
         return isDead;
     }
@@ -119,6 +121,7 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    /* Update the status of the player if it is on the ground to track jumping */
     void OnCollisionStay2D(Collision2D other) {
 
         if (other.collider.tag == "Ground")
@@ -128,6 +131,7 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    /* Update the status of the player when it jumps ot trigger the corresponding animation */
     void OnCollisionExit2D(Collision2D other) {
 
         if (other.collider.tag == "Ground")
@@ -138,6 +142,7 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    /* Destroy star objects when they collide with the player */
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Star")
         {
@@ -147,7 +152,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    /* This function intialises the voice controls array */
+    /* Intialize the available voice controls in an array */
     private void setupActions() {
         actions.Add("jump", () => {
             Debug.Log("Bird is jumping");
@@ -194,7 +199,8 @@ public class PlayerScript : MonoBehaviour
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech) {
         Debug.Log(speech.text);
         System.Action action;
-        // if the keyword recognized is in our dictionary, call that Action.
+
+        // If the keyword is in our dictionary, call that Action.
         if (actions.TryGetValue(speech.text, out action))
         {
             action.Invoke();

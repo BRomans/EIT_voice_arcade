@@ -9,17 +9,18 @@ public class MicrophoneInput : MonoBehaviour
 
     private AudioSource audioSource;
 
+    /* Get and set audio source */
     void Start()
     {
-        //get components you'll need
+        // Get component for audio
         audioSource = GetComponent<AudioSource>();
 
-        // get all available microphones
+        // Get all available microphones
         foreach (string device in Microphone.devices)
         {
             if (microphone == null)
             {
-                //set default mic to first mic found.
+                // Set default mic to first mic found - built-in microphone
                 microphone = device;
             }
         }
@@ -27,22 +28,24 @@ public class MicrophoneInput : MonoBehaviour
         UpdateMicrophone();
     }
 
+    /* Get audio from mic, then play into Unity scene
+    - Sound is muted for the player in Unity using an audio mixer */
     void UpdateMicrophone()
     {
         audioSource.Stop();
+
         //Start recording to audioclip from the mic
         audioSource.clip = Microphone.Start(microphone, true, 10, audioSampleRate);
         audioSource.loop = true;
-        // Mute the sound with an Audio Mixer group because we don't want the player to hear it
-        //Debug.Log(Microphone.IsRecording(microphone).ToString());
 
+        // Make sure the mic is recording
         if (Microphone.IsRecording(microphone))
-        { //check that the mic is recording, otherwise you'll get stuck in an infinite loop waiting for it to start
+        {
             while (!(Microphone.GetPosition(microphone) > 0))
             {
-                // Wait until the recording has started. 
+                // Wait until the recording has started...
             }
-            //Debug.Log("recording started with " + microphone);
+
             // Start playing the audio source
             audioSource.Play();
         }
@@ -52,6 +55,7 @@ public class MicrophoneInput : MonoBehaviour
         }
     }
 
+    /* Calculate the volume from an averaged across the last 256 samples */
     public float GetAveragedVolume()
     {
         float[] data = new float[256];
