@@ -43,6 +43,18 @@ public class PlayerScript : MonoBehaviour
                 Shoot();
             }
 
+            // jumping with j key for quiet testing
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                isFlapping = true;
+                Jump();
+            }
+
+            if (Input.GetKeyUp(KeyCode.J))
+            {
+                isFlapping = false;
+            }
+
             if (isFlapping)
             {
                 Jump();
@@ -64,7 +76,6 @@ public class PlayerScript : MonoBehaviour
             //myAudioPlayer.PlayOneShot(jump);
             isGrounded = false;
             //anim.SetTrigger("Flap");
-
         }
     }
 

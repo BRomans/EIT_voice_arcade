@@ -26,11 +26,9 @@ public class AudioVisualizer : MonoBehaviour
         // new jumping
         if (volume > .1f)
         {
-            //Debug.Log("is flapping...");
             GameController.instance.flapping = true;
         } else
         {
-            //Debug.Log("not flapping...");
             GameController.instance.flapping = false;
         }
 

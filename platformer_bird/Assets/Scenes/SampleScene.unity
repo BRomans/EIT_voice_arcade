@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 541697073}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,7 +947,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1141202688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 170c13c9e633a664abe6093af8a26d0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 84528d427d22543b79ab778ff33da2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &1141202690
@@ -1282,6 +1282,7 @@ GameObject:
   - component: {fileID: 1777548681}
   - component: {fileID: 1777548682}
   - component: {fileID: 1777548683}
+  - component: {fileID: 1777548684}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1337,9 +1338,23 @@ MonoBehaviour:
   columnPrefab: {fileID: 1132160191641555251, guid: 42b431bbcd1cdb646aad7fb3c88ed3fb,
     type: 3}
   spawnRate: 4
-  columnMin: -2
-  columnMax: 2
-  columnYsetPosistion: -0.5
+  columnMin: 0
+  columnMax: -1
+  columnYsetPosition: -1
+--- !u!114 &1777548684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777548680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0f6c345936c4ea7a2d456f17dddf7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1156120658525504283, guid: 60de79c15d2274ff1ac6c4ab00776be7, type: 3}
+  spawnTime: 5
 --- !u!1 &1887397411
 GameObject:
   m_ObjectHideFlags: 0
