@@ -149,6 +149,14 @@ public class PlayerScript : MonoBehaviour
             GameController.instance.birdDied();
         }
 
+        if (other.gameObject.tag == "Alian")
+        {
+            myRigidbody.velocity = Vector2.zero;
+            isDead = true;
+            anim.SetTrigger("Die");
+            GameController.instance.birdDied();
+        }
+
 
 
     }
