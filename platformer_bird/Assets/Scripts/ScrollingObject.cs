@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Define scrolling behavior for platformer-style animation */
 public class ScrollingObject : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     
-    // Start is called before the first frame update
+    /* Give a component the scrollSpeed defined for the entire game */
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.velocity = new Vector2(GameController.instance.scrollSpeed, 0);
     }
 
-    // Update is called once per frame
+    /* Stop scrolling if game ends */
     void Update()
     {
         if (GameController.instance.gameOver)
@@ -21,6 +22,7 @@ public class ScrollingObject : MonoBehaviour
             rb2d.velocity = Vector2.zero;
         } else
         {
+            // ensure component continues moving at full speed (combat any friction)
             rb2d.velocity = new Vector2(GameController.instance.scrollSpeed, 0);
         }
     }

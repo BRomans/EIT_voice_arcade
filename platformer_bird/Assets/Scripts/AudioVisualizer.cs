@@ -2,38 +2,36 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/* Process audio and turn it into a visualizeable behavior, based on volume */
 public class AudioVisualizer : MonoBehaviour
 {
     private float volume;
-    private float volumeLast;
+    //private float volumeLast; // single jumping implementation
 
-    void Start()
-    {
+    void Start() {}
 
-    }
-
+    /* Check the volume to see if a command has been issued */
     void Update()
     {
-        // volume varies between .001 and .36 about
+        // For debugging purposed volume varies between about .001 and .36
         volume = GetComponent<MicrophoneInput>().GetAveragedVolume();
 
-        // old jumping
+        // Single jump - a change in volume was mapped to one jump
         //if (Mathf.Abs(volumeLast - volume) > .05f)
         //{
         //    GameController.instance.birdFlap();
         //}
+        //volumeLast = volume;
 
-        // new jumping
+        // Continous jump - continuously jump if volume is above 0.1, which is the level of loud talking
         if (volume > .1f)
         {
-            //Debug.Log("is flapping...");
+            // if volume is significant, let controller know the bird should be flapping
             GameController.instance.flapping = true;
         } else
         {
-            //Debug.Log("not flapping...");
+            // if volume is insignificant, let controller know the bird should not be flapping
             GameController.instance.flapping = false;
         }
-
-        volumeLast = volume;
     }
 }

@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     private int score = 0;
     public bool flapping;
 
-    // Start is called before the first frame update
+    /* Initiate instance of the game, destroy any other instances */
     void Awake()
     {
         if (instance == null)
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /* Restart if needed, then check the bird's status */
     void Update()
     {
         if (gameOver && Input.GetMouseButtonDown(0))
@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour
         bird.GetComponent<PlayerScript>().isFlapping = flapping;
     }
 
+    /* Update the scoreboard when the player scores */
     public void birdScored()
     {
         if (gameOver)
@@ -50,27 +51,39 @@ public class GameController : MonoBehaviour
         score++;
         scoreText.text = "Score: " + score.ToString();
 
-        // increase speed as score gets higher
-        // current rate: .2 speed every 5 points
+        // Check if difficulty should increase based on new score
+        updateDifficulty();
+    }
+
+    /* Increase the difficulty (speed) as the score gets higher */
+    private void updateDifficulty()
+    {
+        // Current rate: 0.2 speed added for every 5 points
         float factor = 0.2f * (score % 5);
         scrollSpeed -= factor;
     }
 
+    /* Setup all game over attributes when bird dies */
     public void birdDied()
     {
         gameOverText.SetActive(true);
         gameOver = true;
     }
 
+    /* Reload the scene for restarting */
     public void restartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /* Tell the bird player that it is flapping now
+     - relaying information from the audio visualizer, to the player */
     public void birdFlap()
     {
         bird.GetComponent<PlayerScript>().isFlapping = true;
     }
 
+    /* Tell the bird player that it is not flapping now
+    - relaying information from the audio visualizer, to the player */
     public void notFlapping()
     {
         bird.GetComponent<PlayerScript>().isFlapping = false;

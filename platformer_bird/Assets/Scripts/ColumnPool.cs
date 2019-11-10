@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Using pooling to potimize memory for creating the obstacles */
 public class ColumnPool : MonoBehaviour
 {
     public int columnPoolSize = 5;
     public GameObject columnPrefab;
     public float spawnRate = 4f;
-    public float columnMin = 0f;//-1f;
-    public float columnMax = -1f;//3.5f;
-    public float columnYsetPosistion = 0f;//3.5f;
+    public float columnMin = 0f;
+    public float columnMax = -1f;
+    public float columnYsetPosition = 0f;
 
-    private GameObject[] columns;
-    private Vector2 objectPoolPosition = new Vector2(-15f, -25f);
+    private GameObject[] columns; // column pool
+    private Vector2 objectPoolPosition = new Vector2(-15f, -25f); // offscreen position for holding unused columns
     private float timeSinceLastSpawn;
     private float spawnXPosition = 10f;
     private int currentColumn = 0;
 
-    // Start is called before the first frame update
+    /* Initialize a pool of obstacles (columns) of size columnPoolSize off screen */
     void Start()
     {
         columns = new GameObject[columnPoolSize];
@@ -28,7 +29,7 @@ public class ColumnPool : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /* Move the next obstacle in the pool to the correct position in front of the player */
     void Update()
     {
         timeSinceLastSpawn += Time.deltaTime;
@@ -36,8 +37,14 @@ public class ColumnPool : MonoBehaviour
         if (!GameController.instance.gameOver && timeSinceLastSpawn >= spawnRate)
         {
             timeSinceLastSpawn = 0;
-            float spawnYPosition = columnYsetPosistion;//Random.Range(columnMin, columnMax);
+            float spawnYPosition = -1.8f;
 
+            // Randomly resize the next obstacle to increase difficulty and add dynamism
+            float scaleX = Random.Range(1, 2);
+            float scaleY = scaleX * 1.4f;
+            columns[currentColumn].transform.localScale = new Vector2(scaleX, scaleY);
+
+            // Place the next obstacle
             columns[currentColumn].transform.position = new Vector2(spawnXPosition, spawnYPosition);
             currentColumn++;
             if (currentColumn >= columnPoolSize)

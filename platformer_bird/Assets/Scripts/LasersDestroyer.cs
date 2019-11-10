@@ -2,21 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Memory manager class to destroy spawned objects that escape the game (lasers and aliens) */
 public class LasersDestroyer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    void Start() {}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() { }
 
-    // Destroy colliding objects
+    /* Destroy any colliding objects */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(collision.gameObject);
