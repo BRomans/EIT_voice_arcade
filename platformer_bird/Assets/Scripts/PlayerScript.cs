@@ -148,6 +148,10 @@ public class PlayerScript : MonoBehaviour
             anim.SetTrigger("Die");
             GameController.instance.birdDied();
         }
+        if (other.gameObject.tag == "Roof")
+        {
+            Debug.Log("HIT THE ROOF BABY");
+        }
 
 
 
