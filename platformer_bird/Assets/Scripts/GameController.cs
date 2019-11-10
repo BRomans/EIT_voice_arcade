@@ -38,8 +38,6 @@ public class GameController : MonoBehaviour
         }
 
         bird.GetComponent<PlayerScript>().isFlapping = flapping;
-
-        // TODO: add ammo increase
     }
 
     /* Update the scoreboard when the player scores */

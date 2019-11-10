@@ -15,7 +15,8 @@ public class PlayerScript : MonoBehaviour
     float posX = 0.0f;
 
     public Text ammoText;
-    private int ammo = 10;
+    private int ammo;
+    private float timeSinceLastReload;
 
     public Rigidbody2D bullet;
     public float bulletSpeed = 40f;
@@ -62,17 +63,41 @@ public class PlayerScript : MonoBehaviour
             {
                 Jump();
             }
+
+            // Update ammo count - add bullet every 2 seconds
+            updateAmmo();
+            ammoText.text = "Ammo: " + ammo.ToString();
         }
     }
 
-    /* Check ammo then make a new bullet and shoot it */
+    /* Check if have ammo then make a new bullet and shoot it */
     private void Shoot() {
         if (ammo > 0)
         {
             var bulletInst = Instantiate(bullet, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.Euler(new Vector2(0, 0)));
             bulletInst.velocity = new Vector2(bulletSpeed, 0);
             ammo--;
-            ammoText.text = "Ammo: " + ammo.ToString();
+        }
+    }
+
+    /* Add one more bullet to the ammo after a certain amount of time elapses */
+    private void updateAmmo()
+    {
+        timeSinceLastReload += Time.deltaTime;
+
+        if (!GameController.instance.gameOver && timeSinceLastReload >= 2) // new bullet every 2 second(s)
+        {
+            timeSinceLastReload = 0;
+            ammo++;
+        }
+
+        // Set ammo text color to red when ammo empty, otherwise white
+        if (ammo == 0)
+        {
+            ammoText.color = Color.red;
+        } else
+        {
+            ammoText.color = Color.white;
         }
     }
 
