@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
             restartGame();
         }
 
-        bird.GetComponent<PlayerScript>().isFlapping = flapping;
+        bird.GetComponent<PlayerController>().isFlapping = flapping;
     }
 
     /* Update the scoreboard when the player scores */
@@ -79,13 +79,13 @@ public class GameController : MonoBehaviour
      - relaying information from the audio visualizer, to the player */
     public void birdFlap()
     {
-        bird.GetComponent<PlayerScript>().isFlapping = true;
+        bird.GetComponent<PlayerController>().isFlapping = true;
     }
 
     /* Tell the bird player that it is not flapping now
     - relaying information from the audio visualizer, to the player */
     public void notFlapping()
     {
-        bird.GetComponent<PlayerScript>().isFlapping = false;
+        bird.GetComponent<PlayerController>().isFlapping = false;
     }
 }
