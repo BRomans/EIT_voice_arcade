@@ -14,6 +14,9 @@ public class PlayerScript : MonoBehaviour
     bool isGrounded = false;
     float posX = 0.0f;
 
+    public Text ammoText;
+    private int ammo = 10;
+
     public Rigidbody2D bullet;
     public float bulletSpeed = 40f;
 
@@ -24,7 +27,6 @@ public class PlayerScript : MonoBehaviour
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
-    public Text volumeText;
 
     /* Setup voice recognition, animations and the player size and movement */
     void Start() {
@@ -63,10 +65,15 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    /* Make a new bullet and shoot it */
+    /* Check ammo then make a new bullet and shoot it */
     private void Shoot() {
-        var bulletInst = Instantiate(bullet, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Quaternion.Euler(new Vector2(0, 0)));
-        bulletInst.velocity = new Vector2(bulletSpeed, 0);
+        if (ammo > 0)
+        {
+            var bulletInst = Instantiate(bullet, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.Euler(new Vector2(0, 0)));
+            bulletInst.velocity = new Vector2(bulletSpeed, 0);
+            ammo--;
+            ammoText.text = "Ammo: " + ammo.ToString();
+        }
     }
 
     /* Trigger a vertical jump and play the player animation */
