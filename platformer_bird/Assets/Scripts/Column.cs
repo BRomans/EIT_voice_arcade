@@ -10,7 +10,7 @@ public class Column : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
           {
-              GameController.instance.birdScored();
+              GameController.instance.birdScored(1); // worth 1 point
           }
     }
 

@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 541697073}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Bird
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1141202688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d3a32e668583cb46b72bb9f6d374142, type: 3}
+  m_Script: {fileID: 11500000, guid: 84528d427d22543b79ab778ff33da2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &1141202690
@@ -1522,6 +1522,7 @@ MonoBehaviour:
   gameOver: 0
   scrollSpeed: -3.5
   scoreText: {fileID: 98573929}
+  volumeSensitivity: med
   bird: {fileID: 541697067}
   flapping: 0
 --- !u!114 &1777548683

@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
+    public string volumeSensitivity = "med"; // or "low" or "high"
+
     public GameObject bird;
 
     private int score = 0;
@@ -40,15 +42,30 @@ public class GameController : MonoBehaviour
         bird.GetComponent<PlayerScript>().isFlapping = flapping;
     }
 
-    /* Update the scoreboard when the player scores */
-    public void birdScored()
+    /* Update the score and scoreboard when the player scores, with i points */
+    public void birdScored(int i)
     {
         if (gameOver)
         {
             return;
         }
 
-        score++;
+        score += i;
+        scoreText.text = "Score: " + score.ToString();
+
+        // Check if difficulty should increase based on new score
+        updateDifficulty();
+    }
+
+    /* Lose two points when alien attacks */
+    public void alienAttacked()
+    {
+        if (gameOver)
+        {
+            return;
+        }
+
+        score -= 2;
         scoreText.text = "Score: " + score.ToString();
 
         // Check if difficulty should increase based on new score
@@ -61,6 +78,12 @@ public class GameController : MonoBehaviour
         // Current rate: 0.2 speed added for every 5 points
         float factor = 0.2f * (score % 5);
         scrollSpeed -= factor;
+    }
+
+    /* Set the volume sensitivy - at the beginning of the game */
+    private void updateVolumeSensitivity(string input)
+    {
+        volumeSensitivity = input;
     }
 
     /* Setup all game over attributes when bird dies */
