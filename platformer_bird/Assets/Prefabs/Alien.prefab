@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1156120658525504276}
   - component: {fileID: 1156120658525504279}
   - component: {fileID: 4646271811579626943}
-  - component: {fileID: 1570169761421962307}
   - component: {fileID: 5281692089530229261}
   m_Layer: 0
   m_Name: Alien
@@ -296,18 +295,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1570169761421962307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156120658525504283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4afa65dc249d94756aa07c700115e6b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5281692089530229261
 MonoBehaviour:
   m_ObjectHideFlags: 0
