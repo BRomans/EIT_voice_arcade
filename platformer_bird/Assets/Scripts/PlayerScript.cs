@@ -153,6 +153,14 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("HIT THE ROOF BABY");
         }
 
+        if (other.gameObject.tag == "Alian")
+        {
+            myRigidbody.velocity = Vector2.zero;
+            isDead = true;
+            anim.SetTrigger("Die");
+            GameController.instance.birdDied();
+        }
+
 
 
     }

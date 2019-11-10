@@ -8,7 +8,10 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public GameObject gameOverText;
+    public GameObject scoreText2;
+    public GameObject startText;
     public bool gameOver = false;
+    public bool gameStarted = false;
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
@@ -67,6 +70,7 @@ public class GameController : MonoBehaviour
     public void birdDied()
     {
         gameOverText.SetActive(true);
+        scoreText2.SetActive(false);
         gameOver = true;
     }
 
