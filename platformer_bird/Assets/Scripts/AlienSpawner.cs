@@ -21,18 +21,18 @@ public class AlienSpawner : MonoBehaviour
         //InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
 
-    //void Spawn()
-    //{
-    //    if (GameController.instance.gameOver)
-    //    {
-    //        // ... exit the function.
-    //        return;
-    //    }
+    void Spawn()
+    {
+        if (GameController.instance.gameOver)
+        {
+            // ... exit the function.
+            return;
+        }
 
-    //    // Create an instance of the enemy prefab at the specified position.
-    //    Instantiate(enemy, new Vector3(10, alienYsetPosistion, 0), Quaternion.identity);
+        // Create an instance of the enemy prefab at the specified position.
+        Instantiate(enemy, new Vector3(10, alienYsetPosistion, 0), Quaternion.identity);
 
-    //}
+    }
 
     // Update is called once per frame
     void Update()

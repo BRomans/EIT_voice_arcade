@@ -13,7 +13,6 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D myRigidbody;
     bool isGrounded = false;
     float posX = 0.0f;
-    bool isGameOver = false;
 
     public Rigidbody2D bullet;
     public float bulletSpeed = 40f;
@@ -37,15 +36,17 @@ public class PlayerScript : MonoBehaviour
 
     /* Updates the player object. Called once per frame */
     void Update() {
-        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
+        if (!isDead)
         {
-            Shoot();
-        }
+            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
+            {
+                Shoot();
+            }
 
-        //Debug.Log("is flapping? " + isFlapping);
-        if (isFlapping)
-        {
-            Jump();
+            if (isFlapping)
+            {
+                Jump();
+            }
         }
     }
 
@@ -57,9 +58,8 @@ public class PlayerScript : MonoBehaviour
 
     /* Triggers a vertical jump and the player animation */
     public void Jump() {
-        if (!isGameOver)
+        if (!isDead)
         {
-            Debug.Log("is flapping...");
             myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale *2f));
             //myAudioPlayer.PlayOneShot(jump);
             isGrounded = false;
