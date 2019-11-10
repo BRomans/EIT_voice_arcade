@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     bool isGameOver = false;
 
     public Rigidbody2D bullet;
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 40f;
 
     private bool isDead = false;
     public bool isFlapping = false;
@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
 
     /* Generates a new bullet object */
     private void Shoot() {
-        var bulletInst = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector2(0, 0)));
+        var bulletInst = Instantiate(bullet, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Quaternion.Euler(new Vector2(0, 0)));
         bulletInst.velocity = new Vector2(bulletSpeed, 0);
     }
 
