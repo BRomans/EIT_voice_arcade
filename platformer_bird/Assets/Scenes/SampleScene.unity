@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 8, y: -170.49}
+  m_AnchoredPosition: {x: 8, y: -194.77}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65859061
@@ -204,9 +204,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'There is no nous in space so
-
-    make your oun '
+  m_Text: "There is no noise in space so\r\nmake your own"
 --- !u!222 &65859063
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -645,7 +643,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Turcy in Space
+  m_Text: turkey in space
 --- !u!222 &298372518
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1109,7 +1107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Make nous to start
+  m_Text: Make noise to fly
 --- !u!222 &669300810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1900,7 +1898,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Pres space to shute
+  m_Text: Press space to shoot
 --- !u!222 &1852424766
 CanvasRenderer:
   m_ObjectHideFlags: 0
