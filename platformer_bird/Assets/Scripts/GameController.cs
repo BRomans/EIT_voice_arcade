@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
     /* Increase the difficulty (speed) as the score gets higher */
     private void updateDifficulty()
     {
-        // Current rate: 0.2 speed added for every 5 points
+        // Current rate: 0.02 speed added for every 5 points
         float factor = 0.2f * (score % 5);
         scrollSpeed -= factor;
     }
