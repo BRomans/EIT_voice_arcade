@@ -42,7 +42,13 @@ public class GameController : MonoBehaviour
             restartGame();
         }
 
-        bird.GetComponent<PlayerScript>().isFlapping = flapping;
+        if (gameStarted)
+        {
+            bird.GetComponent<PlayerScript>().isFlapping = flapping;
+        } else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameStarted = true;
+        }
     }
 
     /* Update the score and scoreboard when the player scores, with i points */

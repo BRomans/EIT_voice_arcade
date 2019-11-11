@@ -46,7 +46,7 @@ public class AudioVisualizer : MonoBehaviour
         //volumeLast = volume;
 
         // Continous jump - continuously jump if volume is above 0.1, which is the level of loud talking
-        if (volume > sensitivity)
+        if (volume > sensitivity && GameController.instance.gameStarted)
         {
             // if volume is significant, let controller know the bird should be flapping
             GameController.instance.flapping = true;

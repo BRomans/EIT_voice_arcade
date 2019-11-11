@@ -28,7 +28,6 @@ public class PlayerScript : MonoBehaviour
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
-
     /* Setup voice recognition, animations and the player size and movement */
     void Start() {
         setupActions();
@@ -42,31 +41,34 @@ public class PlayerScript : MonoBehaviour
     void Update() {
         if (!isDead)
         {
-            // Shoot on spacebar, for debugging on Mac
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (GameController.instance.gameStarted)
             {
-                Shoot();
-            }
+                // Shoot on spacebar, for debugging on Mac
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Shoot();
+                }
 
-            // Jumping with keyboard for quiet testing
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                isFlapping = true;
-                Jump();
-            }
-            if (Input.GetKeyUp(KeyCode.J))
-            {
-                isFlapping = false;
-            }
+                // Jumping with keyboard for quiet testing
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    isFlapping = true;
+                    Jump();
+                }
+                if (Input.GetKeyUp(KeyCode.J))
+                {
+                    isFlapping = false;
+                }
 
-            if (isFlapping)
-            {
-                Jump();
-            }
+                if (isFlapping)
+                {
+                    Jump();
+                }
 
-            // Update ammo count - add bullet every 2 seconds
-            updateAmmo();
-            ammoText.text = "Ammo: " + ammo.ToString();
+                // Update ammo count - add bullet every 2 seconds
+                updateAmmo();
+                ammoText.text = "Ammo: " + ammo.ToString();
+            }
         }
     }
 
