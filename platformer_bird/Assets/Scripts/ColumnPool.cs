@@ -32,24 +32,27 @@ public class ColumnPool : MonoBehaviour
     /* Move the next obstacle in the pool to the correct position in front of the player */
     void Update()
     {
-        timeSinceLastSpawn += Time.deltaTime;
-
-        if (!GameController.instance.gameOver && timeSinceLastSpawn >= spawnRate)
+        if (GameController.instance.gameStarted)
         {
-            timeSinceLastSpawn = 0;
-            float spawnYPosition = -1.8f;
+            timeSinceLastSpawn += Time.deltaTime;
 
-            // Randomly resize the next obstacle to increase difficulty and add dynamism
-            float scaleX = Random.Range(1, 2);
-            float scaleY = scaleX * 1.4f;
-            columns[currentColumn].transform.localScale = new Vector2(scaleX, scaleY);
-
-            // Place the next obstacle
-            columns[currentColumn].transform.position = new Vector2(spawnXPosition, spawnYPosition);
-            currentColumn++;
-            if (currentColumn >= columnPoolSize)
+            if (!GameController.instance.gameOver && timeSinceLastSpawn >= spawnRate)
             {
-                currentColumn = 0;
+                timeSinceLastSpawn = 0;
+                float spawnYPosition = -1.8f;
+
+                // Randomly resize the next obstacle to increase difficulty and add dynamism
+                float scaleX = Random.Range(1, 2);
+                float scaleY = scaleX * 1.4f;
+                columns[currentColumn].transform.localScale = new Vector2(scaleX, scaleY);
+
+                // Place the next obstacle
+                columns[currentColumn].transform.position = new Vector2(spawnXPosition, spawnYPosition);
+                currentColumn++;
+                if (currentColumn >= columnPoolSize)
+                {
+                    currentColumn = 0;
+                }
             }
         }
     }
