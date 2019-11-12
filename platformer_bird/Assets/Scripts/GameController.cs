@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
         {
             startText.SetActive(false);
             scoreText2.SetActive(true);
-            bird.GetComponent<PlayerScript>().isFlapping = flapping;
+            bird.GetComponent<PlayerController>().isFlapping = flapping;
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
             gameStarted = true;
