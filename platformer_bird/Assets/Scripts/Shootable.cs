@@ -26,7 +26,7 @@ public class Shootable : MonoBehaviour
         }
 
         // Destroy when hit player and game ends
-        if (col.gameObject.name == "Bird")
+        if (col.gameObject.name == "Player")
         {
             Destroy(gameObject);
         }
