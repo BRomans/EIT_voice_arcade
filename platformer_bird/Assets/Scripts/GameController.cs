@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
             micDropdown.enabled = false;
             startText.SetActive(false);
             scoreText2.SetActive(true);
-            bird.GetComponent<PlayerScript>().isFlapping = flapping;
+            bird.GetComponent<PlayerController>().isFlapping = flapping;
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
             startGame();
@@ -144,17 +144,13 @@ public class GameController : MonoBehaviour
      - relaying information from the audio visualizer, to the player */
     public void birdFlap()
     {
-        bird.GetComponent<PlayerScript>().isFlapping = true;
+        bird.GetComponent<PlayerController>().isFlapping = true;
     }
 
     /* Tell the bird player that it is not flapping now
     - relaying information from the audio visualizer, to the player */
     public void notFlapping()
     {
-        bird.GetComponent<PlayerScript>().isFlapping = false;
-    }
-
-    public PlayerController GetPlayer() {
-        return bird.GetComponent<PlayerController>();
+        bird.GetComponent<PlayerController>().isFlapping = false;
     }
 }

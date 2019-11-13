@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 541697067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfda25c70d6d542ddaf81ab59216acb9, type: 3}
+  m_Script: {fileID: 11500000, guid: b20d76fe41f434f4cb1149f80ec542ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 10
@@ -2474,7 +2474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6daca3e56e1414ee7811602ef7390f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toBeDestroyed: alienPrefab(Clone)
 --- !u!61 &1553863758
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3012,7 +3011,7 @@ MonoBehaviour:
   gameStarted: 0
   scrollSpeed: -3.5
   scoreText: {fileID: 98573929}
-  volumeSensitivity: med
+  volumeSensitivity: 0
   bird: {fileID: 541697067}
   flapping: 0
   micDropdown: {fileID: 300629307}
@@ -3047,7 +3046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0f6c345936c4ea7a2d456f17dddf7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 3086430751266843281, guid: 3ea19a8d349af4992a69b08abbacec3f, type: 3}
+  enemy: {fileID: 1995093318092772771, guid: 8d0ee38772fe9b9409a185180fc08d5e, type: 3}
   spawnTime: 5
 --- !u!1 &1852424762
 GameObject:

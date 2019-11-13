@@ -42,8 +42,8 @@ public class ColumnPool : MonoBehaviour
                 float spawnYPosition = -1.8f;
 
                 // Randomly resize the next obstacle to increase difficulty and add dynamism
-                float scaleX = Random.Range(1, 2);
-                float scaleY = scaleX * 1.4f;
+                float scaleX = Random.Range(0.5f, 2.0f);
+                float scaleY = Random.Range(1.0f, 2.0f);
                 columns[currentColumn].transform.localScale = new Vector2(scaleX, scaleY);
 
                 // Place the next obstacle
