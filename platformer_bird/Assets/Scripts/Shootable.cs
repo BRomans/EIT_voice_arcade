@@ -17,6 +17,7 @@ public class Shootable : MonoBehaviour
         {
             Destroy(col.gameObject);
             Destroy(gameObject);
+            GameController.instance.birdScored(2); // shootable objects worth 2 points
         }
 
         // Prevent spawning on top of obstacles
@@ -29,6 +30,7 @@ public class Shootable : MonoBehaviour
         if (col.gameObject.name == "Player")
         {
             Destroy(gameObject);
+            GameController.instance.alienAttacked();
         }
     }
 }

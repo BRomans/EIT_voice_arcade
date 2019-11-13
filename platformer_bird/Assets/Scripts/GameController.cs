@@ -8,9 +8,15 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public GameObject gameOverText;
+    public GameObject scoreText2;
+    public GameObject startText;
     public bool gameOver = false;
+    public bool gameStarted = false;
     public float scrollSpeed = -1.5f;
     public Text scoreText;
+
+    public Dropdown micSensitivitySelector;
+    public string volumeSensitivity = "med"; // or "low" or "high"
 
     public GameObject bird;
 
@@ -27,6 +33,9 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Set default sensitivity to medium
+        micSensitivitySelector.value = 1;
     }
 
     /* Restart if needed, then check the bird's status */
@@ -37,18 +46,42 @@ public class GameController : MonoBehaviour
             restartGame();
         }
 
-        bird.GetComponent<PlayerController>().isFlapping = flapping;
+        if (gameStarted)
+        {
+            updateVolumeSensitivity();
+            startText.SetActive(false);
+            scoreText2.SetActive(true);
+            bird.GetComponent<PlayerController>().isFlapping = flapping;
+        } else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameStarted = true;
+        }
     }
 
-    /* Update the scoreboard when the player scores */
-    public void birdScored()
+    /* Update the score and scoreboard when the player scores, with i points */
+    public void birdScored(int i)
     {
         if (gameOver)
         {
             return;
         }
 
-        score++;
+        score += i;
+        scoreText.text = "Score: " + score.ToString();
+
+        // Check if difficulty should increase based on new score
+        updateDifficulty();
+    }
+
+    /* Lose two points when alien attacks */
+    public void alienAttacked()
+    {
+        if (gameOver)
+        {
+            return;
+        }
+
+        score -= 2;
         scoreText.text = "Score: " + score.ToString();
 
         // Check if difficulty should increase based on new score
@@ -58,15 +91,22 @@ public class GameController : MonoBehaviour
     /* Increase the difficulty (speed) as the score gets higher */
     private void updateDifficulty()
     {
-        // Current rate: 0.2 speed added for every 5 points
+        // Current rate: 0.02 speed added for every 5 points
         float factor = 0.2f * (score % 5);
         scrollSpeed -= factor;
+    }
+
+    /* Set the volume sensitivy - at the beginning of the game */
+    private void updateVolumeSensitivity()
+    {
+        volumeSensitivity = micSensitivitySelector.options[micSensitivitySelector.value].text;
     }
 
     /* Setup all game over attributes when bird dies */
     public void birdDied()
     {
         gameOverText.SetActive(true);
+        scoreText2.SetActive(false);
         gameOver = true;
     }
 

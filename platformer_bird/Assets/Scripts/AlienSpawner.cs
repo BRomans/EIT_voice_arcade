@@ -19,18 +19,21 @@ public class AlienSpawner : MonoBehaviour
     /* Check if it's time to spawn again, then respawn a new alien */
     void Update()
     {
-        timeSinceLastSpawn += Time.deltaTime;
-
-        // Add randomness to spawn rate
-        float spawnRate = Random.Range(spawnRateMin, spawnRateMax);
-
-        // Call spawn function if time to create new alien
-        if (!GameController.instance.gameOver && timeSinceLastSpawn >= spawnRate)
+        if (GameController.instance.gameStarted)
         {
-            // Reset spawn timer
-            timeSinceLastSpawn = 0;
+            timeSinceLastSpawn += Time.deltaTime;
 
-            spawn();
+            // Add randomness to spawn rate
+            float spawnRate = Random.Range(spawnRateMin, spawnRateMax);
+
+            // Call spawn function if time to create new alien
+            if (!GameController.instance.gameOver && timeSinceLastSpawn >= spawnRate)
+            {
+                // Reset spawn timer
+                timeSinceLastSpawn = 0;
+
+                spawn();
+            }
         }
     }
 
