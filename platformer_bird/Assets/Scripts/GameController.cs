@@ -116,6 +116,14 @@ public class GameController : MonoBehaviour
         Debug.Log("Sensitivity: " + volumeSensitivity);
     }
 
+    /* Set the volume sensitivy - using voice command */
+    public void updateVolumeSensitivity(int val)
+    {
+        volumeSensitivity = val;
+        micDropdown.value = val;
+        Debug.Log("Sensitivity: " + volumeSensitivity);
+    }
+
     /* Setup all game over attributes when bird dies */
     public void birdDied()
     {

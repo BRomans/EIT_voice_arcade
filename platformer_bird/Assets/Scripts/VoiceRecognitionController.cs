@@ -37,6 +37,21 @@ public class VoiceRecognitionController : MonoBehaviour
             GameController.instance.reloadGame();
         });
 
+        actions.Add("set low", () => {
+            Debug.Log("Change volume sensibility");
+            GameController.instance.updateVolumeSensitivity(0);
+        });
+
+        actions.Add("set middle", () => {
+            Debug.Log("Change volume sensibility");
+            GameController.instance.updateVolumeSensitivity(1);
+        });
+
+        actions.Add("set high", () => {
+            Debug.Log("Change volume sensibility");
+            GameController.instance.updateVolumeSensitivity(2);
+        });
+
         actions.Add("die", () => {
             Debug.Log("You psycho!");
             PlayerController.instance.Die();
