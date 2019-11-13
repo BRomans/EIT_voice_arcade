@@ -24,6 +24,12 @@ public class GameController : MonoBehaviour
 
     public Dropdown micDropdown;
 
+    private float timeAtStart;
+
+    // Difficulty increase rate: +0.2 speed every 5 seconds
+    float difficultyFactor = 0.2f;
+    float difficultyDelay = 5f;
+
     /* Initiate instance of the game, destroy any other instances */
     void Awake()
     {
@@ -55,6 +61,7 @@ public class GameController : MonoBehaviour
 
         if (gameStarted)
         {
+            updateDifficulty();
             micDropdown.enabled = false;
             startText.SetActive(false);
             scoreText2.SetActive(true);
@@ -75,9 +82,6 @@ public class GameController : MonoBehaviour
 
         score += i;
         scoreText.text = "Score: " + score.ToString();
-
-        // Check if difficulty should increase based on new score
-        updateDifficulty();
     }
 
     /* Lose two points when alien attacks */
@@ -90,17 +94,16 @@ public class GameController : MonoBehaviour
 
         score -= 2;
         scoreText.text = "Score: " + score.ToString();
-
-        // Check if difficulty should increase based on new score
-        updateDifficulty();
     }
 
     /* Increase the difficulty (speed) as the score gets higher */
     private void updateDifficulty()
     {
-        // Current rate: 0.02 speed added for every 5 points
-        float factor = 0.2f * (score % 5);
-        scrollSpeed -= factor;
+        if (Time.time >= timeAtStart + difficultyDelay)
+        {
+            scrollSpeed -= difficultyFactor;
+            timeAtStart = Time.time;
+        }
     }
 
     /* Set the volume sensitivy - at the beginning of the game */
