@@ -57,11 +57,7 @@ public class GameController : MonoBehaviour
 
         if (gameStarted)
         {
-            startText.SetActive(false);
-            scoreText2.SetActive(true);
-            micSensitivitySelector.enabled = false;
-            bird.GetComponent<PlayerController>().isFlapping = flapping;
-            updateDifficulty();
+            bird.GetComponent<PlayerScript>().isFlapping = flapping;
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
             gameStarted = true;
