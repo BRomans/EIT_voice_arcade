@@ -33,6 +33,9 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Set default sensitivy to medium
+        micSensitivitySelector.value = 1;
     }
 
     /* Restart if needed, then check the bird's status */
