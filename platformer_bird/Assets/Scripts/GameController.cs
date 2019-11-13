@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
 
     private int score = 0;
     public bool flapping;
+    private float timeAtStart;
 
     /* Initiate instance of the game, destroy any other instances */
     void Awake()
@@ -57,9 +58,11 @@ public class GameController : MonoBehaviour
             scoreText2.SetActive(true);
             micSensitivitySelector.enabled = false;
             bird.GetComponent<PlayerController>().isFlapping = flapping;
+            updateDifficulty();
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
             gameStarted = true;
+            timeAtStart = Time.time;
         }
     }
 
@@ -73,9 +76,6 @@ public class GameController : MonoBehaviour
 
         score += i;
         scoreText.text = "Score: " + score.ToString();
-
-        // Check if difficulty should increase based on new score
-        updateDifficulty();
     }
 
     /* Lose two points when alien attacks */
@@ -88,17 +88,20 @@ public class GameController : MonoBehaviour
 
         score -= 2;
         scoreText.text = "Score: " + score.ToString();
-
-        // Check if difficulty should increase based on new score
-        updateDifficulty();
     }
 
     /* Increase the difficulty (speed) as the score gets higher */
     private void updateDifficulty()
     {
-        // Current rate: 0.02 speed added for every 5 points
-        float factor = 0.2f * (score % 5);
-        scrollSpeed -= factor;
+        // Current rate: 0.2 speed added every 5 seconds
+        float factor = 0.2f;
+        float delay = 5f;
+
+        if (Time.time >= timeAtStart + delay)
+        {
+            scrollSpeed -= factor;
+            timeAtStart = Time.time;
+        }
     }
 
     /* Set the volume sensitivy - at the beginning of the game */
