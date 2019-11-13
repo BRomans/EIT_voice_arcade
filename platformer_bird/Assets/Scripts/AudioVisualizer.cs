@@ -22,13 +22,13 @@ public class AudioVisualizer : MonoBehaviour
         // Set the volume sensitivity from the game controller
         switch (GameController.instance.volumeSensitivity)
         {
-            case "low":
+            case 0:
                 sensitivity = lowSensitivity;
                 break;
-            case "med":
+            case 1:
                 sensitivity = medSensitivity;
                 break;
-            case "high":
+            case 2:
                 sensitivity = highSensitivity;
                 break;
             default:

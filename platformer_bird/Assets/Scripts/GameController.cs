@@ -15,16 +15,20 @@ public class GameController : MonoBehaviour
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
-    public string volumeSensitivity = "med"; // or "low" or "high"
+    public int volumeSensitivity = 1; // or 0 or 2
 
     public GameObject bird;
 
     private int score = 0;
     public bool flapping;
 
+    public Dropdown micDropdown;
+
     /* Initiate instance of the game, destroy any other instances */
     void Awake()
     {
+        micDropdown.value = 1;
+
         if (instance == null)
         {
             instance = this;
@@ -32,6 +36,13 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        micDropdown.onValueChanged.AddListener(delegate {
+            updateVolumeSensitivity();
+        });
     }
 
     /* Restart if needed, then check the bird's status */
@@ -44,6 +55,7 @@ public class GameController : MonoBehaviour
 
         if (gameStarted)
         {
+            micDropdown.enabled = false;
             startText.SetActive(false);
             scoreText2.SetActive(true);
             bird.GetComponent<PlayerScript>().isFlapping = flapping;
@@ -92,14 +104,16 @@ public class GameController : MonoBehaviour
     }
 
     /* Set the volume sensitivy - at the beginning of the game */
-    private void updateVolumeSensitivity(string input)
+    private void updateVolumeSensitivity()
     {
-        volumeSensitivity = input;
+        volumeSensitivity = micDropdown.value;
+        Debug.Log("Sensitivity: " + volumeSensitivity);
     }
 
     /* Setup all game over attributes when bird dies */
     public void birdDied()
     {
+        micDropdown.enabled = true;
         gameOverText.SetActive(true);
         scoreText2.SetActive(false);
         gameOver = true;
