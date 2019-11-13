@@ -35,7 +35,9 @@ public class GameController : MonoBehaviour
         }
 
         // Set default sensitivity to medium
-        micSensitivitySelector.value = 1;
+        if(micSensitivitySelector != null) {
+            micSensitivitySelector.value = 1;
+        }
     }
 
     /* Restart if needed, then check the bird's status */

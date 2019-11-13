@@ -1,9 +1,9 @@
-  ﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /* Obstacle class */
-public class Column : MonoBehaviour
+public class Asteroid : MonoBehaviour
 {
     /* Tell controller the player scored when bird passes object */
     private void OnTriggerEnter2D(Collider2D other)
