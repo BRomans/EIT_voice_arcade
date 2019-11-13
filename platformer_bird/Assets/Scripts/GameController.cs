@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public Text scoreText;
 
     public Dropdown micSensitivitySelector;
-    public string volumeSensitivity = "med"; // or "low" or "high"
+    public string volumeSensitivity = "Medium"; // or "Low" or "High"
 
     public GameObject bird;
 
@@ -33,9 +33,14 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        // Set default sensitivity to medium
+    void Start()
+    {
         micSensitivitySelector.value = 1;
+        micSensitivitySelector.onValueChanged.AddListener(delegate {
+            updateVolumeSensitivity();
+        });
     }
 
     /* Restart if needed, then check the bird's status */
@@ -48,9 +53,9 @@ public class GameController : MonoBehaviour
 
         if (gameStarted)
         {
-            updateVolumeSensitivity();
             startText.SetActive(false);
             scoreText2.SetActive(true);
+            micSensitivitySelector.enabled = false;
             bird.GetComponent<PlayerController>().isFlapping = flapping;
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -107,6 +112,7 @@ public class GameController : MonoBehaviour
     {
         gameOverText.SetActive(true);
         scoreText2.SetActive(false);
+        micSensitivitySelector.enabled = true;
         gameOver = true;
     }
 
