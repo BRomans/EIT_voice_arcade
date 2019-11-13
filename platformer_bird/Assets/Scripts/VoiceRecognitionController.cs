@@ -62,7 +62,7 @@ public class VoiceRecognitionController : MonoBehaviour
             PlayerController.instance.Shoot();
         });
 
-        actions.Add("peu", () => {
+        actions.Add("laser", () => {
             Debug.Log("Pew Pew!");
             PlayerController.instance.Shoot();
         });
