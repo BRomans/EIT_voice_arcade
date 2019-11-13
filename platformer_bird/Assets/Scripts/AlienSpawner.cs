@@ -42,7 +42,10 @@ public class AlienSpawner : MonoBehaviour
     {
         // Add randomness to spawn location if needed
         float spawnXPosition = Random.Range(randomXMin, randomXMax);
-
+        if(enemy == null) {
+            Debug.Log("Something went wrong when loading the enemy, making a new one", this);
+            enemy = (GameObject)Instantiate(Resources.Load("newAlien"));
+        }
         Instantiate(enemy, new Vector3(10, alienYsetPosistion, 0), Quaternion.identity);
     }
 }

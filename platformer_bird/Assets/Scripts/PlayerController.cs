@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         myRigidbody = transform.GetComponent<Rigidbody2D>();
         myRigidbody.AddForce(Vector3.forward * (movPower * myRigidbody.mass * 20.0f));
+        ammoText = (Text)Instantiate();
     }
 
     /* Updates the player object with commands received from the user/audio control */
@@ -71,6 +72,10 @@ public class PlayerController : MonoBehaviour
     public void Shoot() {
         if (ammo > 0)
         {
+            if(bullet == null) {
+                Debug.Log("Something went wrong when loading the bullet, making a new one", this);
+                bullet = (Rigidbody2D)Instantiate(Resources.Load("laser_0"));
+            }
             var bulletInst = Instantiate(bullet, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.Euler(new Vector2(0, 0)));
             bulletInst.velocity = new Vector2(bulletSpeed, 0);
             ammo--;
