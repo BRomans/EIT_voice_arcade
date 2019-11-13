@@ -16,7 +16,8 @@ public class AudioVisualizer : MonoBehaviour
 
     void Start() {}
 
-    /* Check the volume to see if a command has been issued */
+    /* Check the volume to see if a command has been issued,
+     also update the mic sensitivity if it changes */
     void Update()
     {
         // Set the volume sensitivity from the game controller
