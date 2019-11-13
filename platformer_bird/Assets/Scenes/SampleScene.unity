@@ -2618,11 +2618,7 @@ MonoBehaviour:
   gameStarted: 0
   scrollSpeed: -3.5
   scoreText: {fileID: 98573929}
-<<<<<<< HEAD
-  micSensitivitySelector: {fileID: 0}
-=======
   micSensitivitySelector: {fileID: 1379060473}
->>>>>>> origin/stable
   volumeSensitivity: med
   bird: {fileID: 541697067}
   flapping: 0
