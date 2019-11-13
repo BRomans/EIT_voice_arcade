@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
             updateDifficulty();
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            startGame();
         }
     }
 
@@ -128,7 +128,12 @@ public class GameController : MonoBehaviour
 
     /* Reload the scene for restarting */
     public void restartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        reloadGame();
+        startGame();
+    }
+
+    public void reloadGame() {
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     /* Tell the bird player that it is flapping now

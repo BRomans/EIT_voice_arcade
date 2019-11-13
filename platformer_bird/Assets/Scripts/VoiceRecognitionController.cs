@@ -25,9 +25,14 @@ public class VoiceRecognitionController : MonoBehaviour
             GameController.instance.startGame();
         });
 
+        actions.Add("restart", () => {
+            Debug.Log("Game has restarted");
+            GameController.instance.restartGame();
+        });
+
         actions.Add("reload", () => {
             Debug.Log("Game has reloaded");
-            GameController.instance.restartGame();
+            GameController.instance.reloadGame();
         });
 
         actions.Add("die", () => {
