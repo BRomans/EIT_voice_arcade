@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         myRigidbody = transform.GetComponent<Rigidbody2D>();
         myRigidbody.AddForce(Vector3.forward * (movPower * myRigidbody.mass * 20.0f));
-        ammoText = (Text)Instantiate();
     }
 
     /* Updates the player object with commands received from the user/audio control */
