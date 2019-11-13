@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Set default sensitivy to medium
+        // Set default sensitivity to medium
         micSensitivitySelector.value = 1;
     }
 
