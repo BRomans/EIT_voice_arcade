@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
+    public Dropdown micSensitivitySelector;
     public string volumeSensitivity = "med"; // or "low" or "high"
 
     public GameObject bird;
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
 
         if (gameStarted)
         {
+            updateVolumeSensitivity();
             startText.SetActive(false);
             scoreText2.SetActive(true);
             bird.GetComponent<PlayerController>().isFlapping = flapping;
@@ -92,9 +94,9 @@ public class GameController : MonoBehaviour
     }
 
     /* Set the volume sensitivy - at the beginning of the game */
-    private void updateVolumeSensitivity(string input)
+    private void updateVolumeSensitivity()
     {
-        volumeSensitivity = input;
+        volumeSensitivity = micSensitivitySelector.options[micSensitivitySelector.value].text;
     }
 
     /* Setup all game over attributes when bird dies */
