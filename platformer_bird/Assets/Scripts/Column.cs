@@ -8,7 +8,7 @@ public class Column : MonoBehaviour
     /* Tell controller the player scored when bird passes object */
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bird")
+        if (other.gameObject.tag == "Player")
           {
               GameController.instance.birdScored(1); // worth 1 point
           }

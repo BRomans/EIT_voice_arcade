@@ -15,22 +15,27 @@ public class GameController : MonoBehaviour
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
-    public float difficultyRate = 5f; // how often to add difficulty (in seconds)
-    public float difficultyFactor = 0.2f; // amount of speed to add for difficulty
-
-    public Dropdown micSensitivitySelector;
-    public string volumeSensitivity = "Medium"; // or "Low" or "High"
+    public int volumeSensitivity = 1; // or 0 or 2
 
     public GameObject bird;
 
     private int score = 0;
     public bool flapping;
+
+    public Dropdown micDropdown;
+
     private float timeAtStart;
     VoiceRecognitionController voiceRecognitionController;
+
+    // Difficulty increase rate: +0.2 speed every 5 seconds
+    float difficultyFactor = 0.2f;
+    float difficultyDelay = 5f;
 
     /* Initiate instance of the game, destroy any other instances */
     void Awake()
     {
+        micDropdown.value = 1;
+
         if (instance == null)
         {
             instance = this;
@@ -40,13 +45,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         voiceRecognitionController = new VoiceRecognitionController();
-        voiceRecognitionController.setupActions();
-        voiceRecognitionController.setupRecognizer();
-        micSensitivitySelector.value = 1;
-        micSensitivitySelector.onValueChanged.AddListener(delegate {
+        micDropdown.value = 1;
+        micDropdown.onValueChanged.AddListener(delegate {
             updateVolumeSensitivity();
         });
     }
@@ -61,11 +64,11 @@ public class GameController : MonoBehaviour
 
         if (gameStarted)
         {
+            updateDifficulty();
+            micDropdown.enabled = false;
             startText.SetActive(false);
             scoreText2.SetActive(true);
-            micSensitivitySelector.enabled = false;
-            bird.GetComponent<PlayerController>().isFlapping = flapping;
-            updateDifficulty();
+            bird.GetComponent<PlayerScript>().isFlapping = flapping;
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
             startGame();
@@ -99,7 +102,7 @@ public class GameController : MonoBehaviour
     /* Increase the difficulty (speed) as the score gets higher */
     private void updateDifficulty()
     {
-        if (Time.time >= timeAtStart + difficultyRate)
+        if (Time.time >= timeAtStart + difficultyDelay)
         {
             scrollSpeed -= difficultyFactor;
             timeAtStart = Time.time;
@@ -109,15 +112,16 @@ public class GameController : MonoBehaviour
     /* Set the volume sensitivy - at the beginning of the game */
     private void updateVolumeSensitivity()
     {
-        volumeSensitivity = micSensitivitySelector.options[micSensitivitySelector.value].text;
+        volumeSensitivity = micDropdown.value;
+        Debug.Log("Sensitivity: " + volumeSensitivity);
     }
 
     /* Setup all game over attributes when bird dies */
     public void birdDied()
     {
+        micDropdown.enabled = true;
         gameOverText.SetActive(true);
         scoreText2.SetActive(false);
-        micSensitivitySelector.enabled = true;
         gameOver = true;
     }
 
@@ -140,14 +144,14 @@ public class GameController : MonoBehaviour
      - relaying information from the audio visualizer, to the player */
     public void birdFlap()
     {
-        bird.GetComponent<PlayerController>().isFlapping = true;
+        bird.GetComponent<PlayerScript>().isFlapping = true;
     }
 
     /* Tell the bird player that it is not flapping now
     - relaying information from the audio visualizer, to the player */
     public void notFlapping()
     {
-        bird.GetComponent<PlayerController>().isFlapping = false;
+        bird.GetComponent<PlayerScript>().isFlapping = false;
     }
 
     public PlayerController GetPlayer() {

@@ -12,6 +12,8 @@ public class VoiceRecognitionController : MonoBehaviour
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
         
     public VoiceRecognitionController() {
+        setupActions();
+        setupRecognizer();
     }
         
     /* Intialize the available voice controls in an array */

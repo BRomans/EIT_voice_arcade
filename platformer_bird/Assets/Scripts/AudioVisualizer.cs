@@ -16,20 +16,19 @@ public class AudioVisualizer : MonoBehaviour
 
     void Start() {}
 
-    /* Check the volume to see if a command has been issued,
-     also update the mic sensitivity if it changes */
+    /* Check the volume to see if a command has been issued */
     void Update()
     {
         // Set the volume sensitivity from the game controller
         switch (GameController.instance.volumeSensitivity)
         {
-            case "Low":
+            case 0:
                 sensitivity = lowSensitivity;
                 break;
-            case "Medium":
+            case 1:
                 sensitivity = medSensitivity;
                 break;
-            case "High":
+            case 2:
                 sensitivity = highSensitivity;
                 break;
             default:
