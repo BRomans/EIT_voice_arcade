@@ -15,17 +15,12 @@ public class GameController : MonoBehaviour
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
-    public float difficultyRate = 5f; // how often to add difficulty (in seconds)
-    public float difficultyFactor = 0.2f; // amount of speed to add for difficulty
-
-    public Dropdown micSensitivitySelector;
-    public string volumeSensitivity = "Medium"; // or "Low" or "High"
+    public string volumeSensitivity = "med"; // or "low" or "high"
 
     public GameObject bird;
 
     private int score = 0;
     public bool flapping;
-    private float timeAtStart;
 
     /* Initiate instance of the game, destroy any other instances */
     void Awake()
@@ -37,14 +32,6 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    {
-        micSensitivitySelector.value = 1;
-        micSensitivitySelector.onValueChanged.AddListener(delegate {
-            updateVolumeSensitivity();
-        });
     }
 
     /* Restart if needed, then check the bird's status */
@@ -59,13 +46,10 @@ public class GameController : MonoBehaviour
         {
             startText.SetActive(false);
             scoreText2.SetActive(true);
-            micSensitivitySelector.enabled = false;
-            bird.GetComponent<PlayerController>().isFlapping = flapping;
-            updateDifficulty();
+            bird.GetComponent<PlayerScript>().isFlapping = flapping;
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
             gameStarted = true;
-            timeAtStart = Time.time;
         }
     }
 
@@ -79,6 +63,9 @@ public class GameController : MonoBehaviour
 
         score += i;
         scoreText.text = "Score: " + score.ToString();
+
+        // Check if difficulty should increase based on new score
+        updateDifficulty();
     }
 
     /* Lose two points when alien attacks */
@@ -91,22 +78,23 @@ public class GameController : MonoBehaviour
 
         score -= 2;
         scoreText.text = "Score: " + score.ToString();
+
+        // Check if difficulty should increase based on new score
+        updateDifficulty();
     }
 
     /* Increase the difficulty (speed) as the score gets higher */
     private void updateDifficulty()
     {
-        if (Time.time >= timeAtStart + difficultyRate)
-        {
-            scrollSpeed -= difficultyFactor;
-            timeAtStart = Time.time;
-        }
+        // Current rate: 0.02 speed added for every 5 points
+        float factor = 0.2f * (score % 5);
+        scrollSpeed -= factor;
     }
 
     /* Set the volume sensitivy - at the beginning of the game */
-    private void updateVolumeSensitivity()
+    private void updateVolumeSensitivity(string input)
     {
-        volumeSensitivity = micSensitivitySelector.options[micSensitivitySelector.value].text;
+        volumeSensitivity = input;
     }
 
     /* Setup all game over attributes when bird dies */
@@ -114,7 +102,6 @@ public class GameController : MonoBehaviour
     {
         gameOverText.SetActive(true);
         scoreText2.SetActive(false);
-        micSensitivitySelector.enabled = true;
         gameOver = true;
     }
 
@@ -127,13 +114,13 @@ public class GameController : MonoBehaviour
      - relaying information from the audio visualizer, to the player */
     public void birdFlap()
     {
-        bird.GetComponent<PlayerController>().isFlapping = true;
+        bird.GetComponent<PlayerScript>().isFlapping = true;
     }
 
     /* Tell the bird player that it is not flapping now
     - relaying information from the audio visualizer, to the player */
     public void notFlapping()
     {
-        bird.GetComponent<PlayerController>().isFlapping = false;
+        bird.GetComponent<PlayerScript>().isFlapping = false;
     }
 }
