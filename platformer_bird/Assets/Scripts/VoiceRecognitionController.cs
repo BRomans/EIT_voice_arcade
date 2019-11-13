@@ -8,46 +8,46 @@ using UnityEngine.UI;
 
 public class VoiceRecognitionController : MonoBehaviour
 {
-
-    private PlayerController playerController;
-
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
         
-    public VoiceRecognitionController(PlayerController controller) {
-        playerController = controller;
+    public VoiceRecognitionController() {
     }
         
     /* Intialize the available voice controls in an array */
     public void setupActions() {
         actions.Add("jump", () => {
             Debug.Log("Bird is jumping");
-            playerController.Jump();
+            PlayerController.instance.Jump();
         });
         actions.Add("start", () => {
-            //TriggerJump()
             Debug.Log("Game has started");
-            playerController.Restart();
+            GameController.instance.startGame();
+        });
+
+        actions.Add("reload", () => {
+            Debug.Log("Game has reloaded");
+            GameController.instance.restartGame();
         });
 
         actions.Add("die", () => {
             Debug.Log("You psycho!");
-            playerController.Die();
+            PlayerController.instance.Die();
         });
 
         actions.Add("bang", () => {
             Debug.Log("Pew Pew!");
-            playerController.Shoot();
+            PlayerController.instance.Shoot();
         });
 
         actions.Add("peu", () => {
             Debug.Log("Pew Pew!");
-            playerController.Shoot();
+            PlayerController.instance.Shoot();
         });
 
         actions.Add("pew", () => {
             Debug.Log("Pew Pew!");
-            playerController.Shoot();
+            PlayerController.instance.Shoot();
         });
 
     }    

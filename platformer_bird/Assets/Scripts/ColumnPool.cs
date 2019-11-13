@@ -45,8 +45,8 @@ public class ColumnPool : MonoBehaviour
                 // Increase max possible based on difficulty
                 float difficulty = Mathf.Abs(GameController.instance.scrollSpeed) - 1.5f; // scroll speed starts at -1.5 and decreases
 
-                float scaleX = Random.Range(1, 2 + difficulty);
-                float scaleY = scaleX * 1.4f;
+                float scaleX = Random.Range(0.5f, 1f + difficulty);
+                float scaleY = scaleX;
                 columns[currentColumn].transform.localScale = new Vector2(scaleX, scaleY);
 
                 // Place the next obstacle

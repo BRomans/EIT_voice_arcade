@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
     private int score = 0;
     public bool flapping;
     private float timeAtStart;
+    VoiceRecognitionController voiceRecognitionController;
 
     /* Initiate instance of the game, destroy any other instances */
     void Awake()
@@ -41,6 +42,9 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        voiceRecognitionController = new VoiceRecognitionController();
+        voiceRecognitionController.setupActions();
+        voiceRecognitionController.setupRecognizer();
         micSensitivitySelector.value = 1;
         micSensitivitySelector.onValueChanged.AddListener(delegate {
             updateVolumeSensitivity();
@@ -64,8 +68,7 @@ public class GameController : MonoBehaviour
             updateDifficulty();
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
-            gameStarted = true;
-            timeAtStart = Time.time;
+            
         }
     }
 
@@ -118,6 +121,11 @@ public class GameController : MonoBehaviour
         gameOver = true;
     }
 
+    public void startGame() {
+        gameStarted = true;
+        timeAtStart = Time.time;
+    }
+
     /* Reload the scene for restarting */
     public void restartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -135,5 +143,9 @@ public class GameController : MonoBehaviour
     public void notFlapping()
     {
         bird.GetComponent<PlayerController>().isFlapping = false;
+    }
+
+    public PlayerController GetPlayer() {
+        return bird.GetComponent<PlayerController>();
     }
 }

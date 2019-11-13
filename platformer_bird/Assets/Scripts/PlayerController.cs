@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour
 {
     public float jumpPower = 2.0f;
     public float movPower = 5.0f;
-    Rigidbody2D myRigidbody;
+    Rigidbody2D player;
     bool isGrounded = false;
     float posX = 0.0f;
 
+    public static PlayerController instance;
     public Text ammoText;
     private int ammo;
     private float timeSinceLastReload;
@@ -23,16 +24,20 @@ public class PlayerController : MonoBehaviour
     private bool isDead = false;
     public bool isFlapping = false;
     private Animator anim;
-    VoiceRecognitionController voiceRecognitionController;
+    
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        } 
+    }
 
     /* Setup voice recognition, animations and the player size and movement */
     void Start() {
-        voiceRecognitionController = new VoiceRecognitionController(this);
-        voiceRecognitionController.setupActions();
-        voiceRecognitionController.setupRecognizer();
         anim = GetComponent<Animator>();
-        myRigidbody = transform.GetComponent<Rigidbody2D>();
-        myRigidbody.AddForce(Vector3.forward * (movPower * myRigidbody.mass * 20.0f));
+        player = transform.GetComponent<Rigidbody2D>();
+        player.AddForce(Vector3.forward * (movPower * player.mass * 20.0f));
     }
 
     /* Updates the player object with commands received from the user/audio control */
@@ -102,7 +107,7 @@ public class PlayerController : MonoBehaviour
     public void Jump() {
         if (!isDead)
         {
-            myRigidbody.AddForce(Vector3.up * (jumpPower * myRigidbody.mass * myRigidbody.gravityScale *2f));
+            player.AddForce(Vector3.up * (jumpPower * player.mass * player.gravityScale *2f));
             //myAudioPlayer.PlayOneShot(jump);
             isGrounded = false;
             //anim.SetTrigger("Flap");
@@ -112,7 +117,7 @@ public class PlayerController : MonoBehaviour
     /* Kill the player object, set it to dead and notify the game controller */
     public void Die() {
         if(!isDead) {
-            myRigidbody.velocity = Vector2.zero;
+            player.velocity = Vector2.zero;
             isDead = true;
             anim.SetTrigger("Die");
             GameController.instance.birdDied();
@@ -140,7 +145,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Colum")
         {
-            myRigidbody.velocity = Vector2.zero;
+            player.velocity = Vector2.zero;
             isDead = true;
             anim.SetTrigger("Die");
             GameController.instance.birdDied();
