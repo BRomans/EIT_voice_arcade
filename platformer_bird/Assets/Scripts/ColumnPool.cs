@@ -41,8 +41,11 @@ public class ColumnPool : MonoBehaviour
                 timeSinceLastSpawn = 0;
                 float spawnYPosition = -1.8f;
 
-                // Randomly resize the next obstacle to increase difficulty and add dynamism
-                float scaleX = Random.Range(1, 2);
+                // Randomly resize the next obstacle to add dynamism
+                // Increase max possible based on difficulty
+                float difficulty = Mathf.Abs(GameController.instance.scrollSpeed) - 1.5f; // scroll speed starts at -1.5 and decreases
+
+                float scaleX = Random.Range(1, 2 + difficulty);
                 float scaleY = scaleX * 1.4f;
                 columns[currentColumn].transform.localScale = new Vector2(scaleX, scaleY);
 

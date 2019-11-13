@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public float scrollSpeed = -1.5f;
     public Text scoreText;
 
+    public float difficultyRate = 5f; // how often to add difficulty (in seconds)
+    public float difficultyFactor = 0.2f; // amount of speed to add for difficulty
+
     public Dropdown micSensitivitySelector;
     public string volumeSensitivity = "Medium"; // or "Low" or "High"
 
@@ -93,13 +96,9 @@ public class GameController : MonoBehaviour
     /* Increase the difficulty (speed) as the score gets higher */
     private void updateDifficulty()
     {
-        // Current rate: 0.2 speed added every 5 seconds
-        float factor = 0.2f;
-        float delay = 5f;
-
-        if (Time.time >= timeAtStart + delay)
+        if (Time.time >= timeAtStart + difficultyRate)
         {
-            scrollSpeed -= factor;
+            scrollSpeed -= difficultyFactor;
             timeAtStart = Time.time;
         }
     }
