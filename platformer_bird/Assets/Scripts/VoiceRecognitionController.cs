@@ -18,6 +18,7 @@ public class VoiceRecognitionController : MonoBehaviour
         
     /* Intialize the available voice controls in an array */
     public void setupActions() {
+        actions = new Dictionary<string, Action>();
         actions.Add("jump", () => {
             Debug.Log("Bird is jumping");
             PlayerController.instance.Jump();

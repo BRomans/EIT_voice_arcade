@@ -140,12 +140,14 @@ public class GameController : MonoBehaviour
 
     /* Reload the scene for restarting */
     public void restartGame() {
+        voiceRecognitionController.setupActions();
         reloadGame();
         startGame();
     }
 
     public void reloadGame() {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        voiceRecognitionController.setupActions();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     /* Tell the bird player that it is flapping now
