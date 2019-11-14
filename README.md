@@ -3,7 +3,7 @@ For this project our goal was to experiment with new interaction techniques insi
 We decided to revisit a very popular game, Flappy Bird, an endless platformer that became famous a few years ago thanks to YouTube videos of players struggling while trying to challenge the simple but difficult mechanic of the game. 
 All of these videos have in common the fact that players used to scream very often while playing due to the difficulty, so we decided to turn these screams into a new way of interacting with the game. 
 
-View the full presentation and technical documentation here: [presentation](https://github.com/BRomans/EIT_voice_arcade/raw/stable0.2.2/game_presentation.pdf)
+View the full presentation and technical documentation here: [documentation](https://github.com/BRomans/EIT_voice_arcade/raw/stable0.2.2/game_presentation.pdf)
 
 ### Playing game
 Download the first Alpha release here: [Release0.2.2](https://github.com/BRomans/EIT_voice_arcade/raw/stable0.2.2/turkey_jump_desktop_r0.2.2.zip)
