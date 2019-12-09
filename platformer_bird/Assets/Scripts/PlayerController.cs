@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
+//using UnityEngine.Windows.Speech;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         if (!isDead)
         {
             // Shoot on spacebar, for debugging on Mac
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 Shoot();
             }

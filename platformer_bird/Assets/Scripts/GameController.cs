@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     public Dropdown micDropdown;
 
     private float timeAtStart;
-    VoiceRecognitionController voiceRecognitionController;
+    //VoiceRecognitionController voiceRecognitionController;
 
     // Difficulty increase rate: +0.2 speed every 5 seconds
     float difficultyFactor = 0.2f;
@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        voiceRecognitionController = new VoiceRecognitionController();
+        //voiceRecognitionController = new VoiceRecognitionController();
         micDropdown.value = 1;
         micDropdown.onValueChanged.AddListener(delegate {
             updateVolumeSensitivity();
@@ -57,10 +57,16 @@ public class GameController : MonoBehaviour
     /* Restart if needed, then check the bird's status */
     void Update()
     {
-        if (gameOver && Input.GetMouseButtonDown(0))
+        if (gameOver && (Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)))
         {
             restartGame();
         }
+
+        if (gameOver && (Input.GetMouseButtonDown(0) || (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began)))
+        {
+            reloadGame();
+        }
+
 
         if (gameStarted)
         {
@@ -69,7 +75,7 @@ public class GameController : MonoBehaviour
             startText.SetActive(false);
             scoreText2.SetActive(true);
             bird.GetComponent<PlayerController>().isFlapping = flapping;
-        } else if (Input.GetKeyDown(KeyCode.Space))
+        } else if (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
             startGame();
         }
@@ -140,13 +146,13 @@ public class GameController : MonoBehaviour
 
     /* Reload the scene for restarting */
     public void restartGame() {
-        voiceRecognitionController.setupActions();
+       // voiceRecognitionController.setupActions();
         reloadGame();
         startGame();
     }
 
     public void reloadGame() {
-        voiceRecognitionController.setupActions();
+       // voiceRecognitionController.setupActions();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
