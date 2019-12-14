@@ -57,16 +57,17 @@ public class GameController : MonoBehaviour
     /* Restart if needed, then check the bird's status */
     void Update()
     {
-        if (gameOver && (Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)))
-        {
-            restartGame();
-        }
+        if (Input.touchCount > 0 ) {
+            if (gameOver && (Input.GetMouseButtonDown(0) || (Input.GetTouch (0).tapCount == 1)))
+            {
+                reloadGame();
+            }
 
-        if (gameOver && (Input.GetMouseButtonDown(0) || (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began)))
-        {
-            reloadGame();
+            if (gameOver && (Input.GetMouseButtonDown(0) || (Input.GetTouch (0).tapCount == 2)))
+            {
+                restartGame();
+            }
         }
-
 
         if (gameStarted)
         {

@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         if (!isDead)
         {
             // Shoot on spacebar, for debugging on Mac
-            if (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began))
+            if (Input.GetKeyDown(KeyCode.Space) || ( Input.touchCount > 0 && Input.GetTouch (0).tapCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 Shoot();
             }
