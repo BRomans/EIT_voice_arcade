@@ -23,7 +23,7 @@ Clone the last stable release from our repository, then:
 
 1.Download Unity Hub from here: https://store.unity.com/download?ref=personal
 
-2.Install Unity version : 2019.2.6f1
+2.Install Unity version : 2019.3.*
 
 3.Go to "Project" tab in Unity Hub Window, 
 
@@ -33,6 +33,6 @@ Clone the last stable release from our repository, then:
 
 6.Click "Window" --> "Layout" --> "2 by 3"
 
-7.Under "Hierarchy" tab double click SamlpeScene to set up graphics
+7.Under "Hierarchy" tab double click SampleScene to open it
 
 8.To start game click on ">" (start symbol)
